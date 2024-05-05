@@ -5,11 +5,7 @@
 .image-container {
     display: flex;
     justify-content: start;
-    gap: 85px;
+    column-gap: 75px;
+    flex-wrap: wrap;
 }
 
-.image {
-    display:flex;
-    justify-content: start;
-    padding-left: 5px;
-}
