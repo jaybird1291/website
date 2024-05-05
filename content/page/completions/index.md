@@ -1,0 +1,84 @@
+---
+title: "Complétions"
+slug: "completions"
+menu:
+    main:
+        weight: 2
+        params: 
+            icon: checkbox
+---
+
+Liste de tous les challenges, labs, box etc. que j'ai effectué.
+
+## HackTheBox 
+### Sherlock (19%)
+
+#### DFIR (26%)
+<div class="image-container">
+    <div class="image">{{< figure src="htb-aptnightmare.webp" title="APT Nightmare" width=120 >}}</div>
+    <div class="image">{{< figure src="opshieldwall1.webp" title="OpShieldWall-1" width=120 >}}</div>
+    <div class="image">{{< figure src="htb-JingleBell.webp" title="Jingle Bell" link="https://labs.hackthebox.com/achievement/sherlock/1271052/613" width=120 >}}</div>
+    <div class="image">{{< figure src="recollection.webp" title="Recollection" link="https://labs.hackthebox.com/achievement/sherlock/1271052/586" width=120 >}}</div>
+    <div class="image">{{< figure src="noted.webp" title="Noted" link="https://labs.hackthebox.com/achievement/sherlock/1271052/585" width=120 >}}</div>
+    <div class="image">{{< figure src="tracer.webp" title="Tracer" link="https://labs.hackthebox.com/achievement/sherlock/1271052/558" width=120 >}}</div>
+</div>
+
+<div class="image-container">
+    <div class="image">{{< figure src="logjammer.webp" title="Log Jammer" link="https://labs.hackthebox.com/achievement/sherlock/1271052/557" width=120 >}}</div>
+    <div class="image">{{< figure src="rogueone.webp" title="Rogue One" link="https://labs.hackthebox.com/achievement/sherlock/1271052/569" width=120 >}}</div>
+</div>
+
+
+#### Cloud (50%)
+<div class="image-container">
+    <div class="image">{{< figure src="htb-nubilum-2.webp" title="Nubilum-2" link="https://labs.hackthebox.com/achievement/sherlock/1271052/573" width=120 >}}</div>
+</div>
+
+### Box (8/386)
+<div class="image-container">
+    <div class="image">{{< figure src="wifinetic.webp" title="Wifinetic" link="https://www.hackthebox.com/achievement/machine/1271052/563" width=120 >}}</div>
+    <div class="image">{{< figure src="metatwo.webp" title="MetaTwo" link="https://www.hackthebox.com/achievement/machine/1271052/504" width=120 >}}</div>
+    <div class="image">{{< figure src="lame.webp" title="Lame" link="https://www.hackthebox.com/achievement/machine/1271052/1" width=120 >}}</div>
+    <div class="image">{{< figure src="jerry.webp" title="Jerry" link="https://www.hackthebox.com/achievement/machine/1271052/144" width=120 >}}</div>
+    <div class="image">{{< figure src="netmon.webp" title="Netmon" link="https://www.hackthebox.com/achievement/machine/1271052/177" width=120 >}}</div>
+    <div class="image">{{< figure src="nibbles.webp" title="Nibbles" link="https://www.hackthebox.com/achievement/machine/1271052/121" width=120 >}}</div>
+</div>
+
+<div class="image-container">
+    <div class="image">{{< figure src="precious.webp" title="Precious" link="https://www.hackthebox.com/achievement/machine/1271052/513" width=120 >}}</div>
+    <div class="image">{{< figure src="blue.webp" title="Blue" link="https://www.hackthebox.com/achievement/machine/1271052/51" width=120 >}}</div>
+</div>
+
+
+## HackTheBox Academy
+### Module
+{{< embed-pdf url="htb-academy-transcript.pdf" >}}
+
+## RootMe
+### Réseaux (100%)
+![](rootme-reseau.png)
+
+### Forensic (57%)
+![](rootme-forensic.png)
+
+
+## Cyberdefenders
+### Network Forensics (63%)
+<div class="image-container">
+    <div class="image">{{< figure src="PacketMaze.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/68/" width=150 >}}</div>
+    <div class="image">{{< figure src="HawkEye.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/91/" width=150 >}}</div>
+    <div class="image">{{< figure src="OpenWire.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/153/" width=150 >}}</div>
+    <div class="image">{{< figure src="webinvestigation.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/170/" width=150 >}}</div>
+    <div class="image">{{< figure src="PsExec_Hunt.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/143/" width=150 >}}</div>
+</div>
+
+<div class="image-container">
+    <div class="image">{{< figure src="PoisonedCredentials.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/146/" width=150 >}}</div>
+    <div class="image">{{< figure src="WebStrike.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/149/" width=150 >}}</div>
+    <div class="image">{{< figure src="Tomcat_Takeover.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/135/" width=150 >}}</div>
+</div>
+
+<!-- ## Result
+
+![Image 1](1.jpg) ![Image 2](2.jpg) -->
+

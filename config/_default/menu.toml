@@ -8,17 +8,41 @@
 #newtab = true
 
 [[social]]
-identifier = "github"
-name = "GitHub"
-url = "https://github.com/CaiJimmy/hugo-theme-stack"
+identifier = "RootMe"
+name = "RootMe"
+url = "https://www.root-me.org/Surfer0118"
+weight = 1
+newtab = true
 
 [social.params]
-icon = "brand-github"
+icon = "rootme"
 
 [[social]]
-identifier = "twitter"
-name = "Twitter"
-url = "https://twitter.com"
+identifier = "HackTheBox"
+name = "HackTheBox"
+url = "https://app.hackthebox.com/profile/1271052"
+weight = 2
+newtab = true
 
 [social.params]
-icon = "brand-twitter"
+icon = "htb"
+
+[[social]]
+identifier = "TryHackMe"
+name = "TryHackMe"
+url = "https://tryhackme.com/p/Jaybird1291"
+weight = 4
+newtab = true
+
+[social.params]
+icon = "thm"
+
+[[social]]
+identifier = "Cyberdefenders"
+name = "Cyberdefenders"
+url = "https://cyberdefenders.org/p/Miaoux2000#/overview"
+weight = 3
+newtab = true
+
+[social.params]
+icon = "cyberdefenders"
