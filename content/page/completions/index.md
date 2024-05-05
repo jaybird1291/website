@@ -51,8 +51,8 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué.
 
 
 ## HackTheBox Academy
-### Module
-{{< embed-pdf url="htb-academy-transcript.pdf" >}}
+### Modules
+[Transcript.pdf](htb-academy-transcript.pdf)
 
 ## RootMe
 ### Réseaux (100%)
