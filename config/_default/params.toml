@@ -15,7 +15,7 @@ lastUpdated = "02/01/2006 15:04 MST"
 [sidebar]
 emoji = "🤓"
 subtitle = "Étudiant à l'École2600."
-
+ 
 [sidebar.avatar]
 enabled = true
 local = true

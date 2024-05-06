@@ -58,75 +58,12 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
 
 ## RootMe
 ### Réseaux (100%)
-**Très facile** :
-- FTP - Authentification
-- ETHERNET - trame
-- TELNET - authentification
-
-**Facile** :
-- POP - APOP
-- SIP - Authentification
-- OSPF - Authentification
-- LDAP - null bind
-- IP - Time To Live
-- DNS - transfert de zone
-- CISCO - mot de passe
-- Bluetooth - Fichier inconnu
-- Authentification twitter
-- RF - FM Transmission
-- RF - AM Transmission
-
-**Moyen** : 
-- Wired Equivalent Privacy
-- XMPP - Authentification
-- ARP Spoofing - Écoute active
-- Charge ICMP
-- RF - Key Fixed Code
-- SNMP - Authentification
-- Netfilter - erreurs courantes
-- SSL - échange HTTP
-- HTTP - DNS Rebinding
-- Trafic Global System for Mobile communications
-- ETHERNET - Transmission altérée
-- RF - Transmission satellite
-- RF - Bande L
-
+![](rootme-reseau.png)
 <br>
 
 
 ### Forensic (57%)
-**Très facile** : 
-- Fichier supprimé
-
-**Facile** :
-- Capture moi ça
-- Oh My Grub
-- Command Control - niveau 2
-
-**Moyen** :
-- Docker layers
-- Windows - LDAP User KerbeRoastable
-- Windows - NTDS Extraction de secrets
-- Analyse de logs - attaque web
-- Supply chain attack - Docker
-- Trouvez le chat
-- Vilain petit canard
-- Windows - LDAP User ASRepRoastable
-- Active Directory - GPO
-- Command Control - niveau 3
-- Command Control - niveau 4
-- Command Control - niveau 5
-- Exfiltration DNS
-- Open My Vault
-- C2 Mythic
-- Entretien à l'ANSSI
-- Second entretien à l'ANSSI
-- Macro Word malveillante
-- The Artist
-
-**Difficile** :
-- Command & Control - niveau 6
-
+![](rootme-forensic.png)
 <br>
 
 
