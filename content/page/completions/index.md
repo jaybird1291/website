@@ -86,18 +86,16 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
 ## TryHackMe
 ### Path
 <div class="image-container">
-    <div class="image">{{< figure src="thm-cd.png" width=270 >}}</div>
-    <div class="image">{{< figure src="thm-ps.png" width=270 >}}</div>
-    <div class="image">{{< figure src="thm-itcs.png" width=270 >}}</div>
+    <div class="image">{{< figure src="thm-ps.png" width=250 >}}</div>
+    <div class="image">{{< figure src="thm-itcs.png" width=250 >}}</div>
+    <div class="image">{{< figure src="thm-cb.png" width=250 >}}</div>
 </div>
-<div class="image-container">
-    <div class="image">{{< figure src="thm-cb.png" width=270 >}}</div>
-</div>
+
 
 ## Conf & meetups
 ### 2023
 <div class="image-container">
-    <div class="image">{{< figure src="hexacon.png" title="Hexacon" width=320 >}}</div>
+    <div class="image">{{< figure src="hexacon.png" title="Hexacon" width=300 >}}</div>
     <div class="image">{{< figure src="defconparis.png" title="DEFCON Paris" width=165 >}}</div>
     <div class="image">{{< figure src="lehack.png" title="LeHack" width=320 >}}</div>
 </div>
