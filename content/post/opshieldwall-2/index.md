@@ -36,7 +36,7 @@ Avant de commencer, voici quelques informations importantes sur Android :
 
 Les données utilisateur peuvent être stockées en interne et en externe sur Android. Les données internes sont enregistrées dans la mémoire flash NAND, une mémoire non volatile qui conserve les données même en cas de coupure d'alimentation. La NAND stocke le bootloader, le système d'exploitation et les données utilisateur. Les données des applications sont stockées sur la mémoire flash NAND ou sur la carte SD. 
 
-Android est basé sur des variantes des branches LTS (long-term support) du Kernel Linux (en fonction de l'appareil). Avec Android v8 (Oreo), Google a imposé l'utilisation du Kernel Linux 4.4 (ou supérieur). Android v9 (Pie) fonctionne sur les versions 4.4, 4.9 ou 4.14 du Kernel Linux, selon l'appareil. Plus d'infi disponnible sur le wiki d'Android OS https://source.android.com/docs/core/architecture/kernel/android-common?hl=fr.
+Android est basé sur des variantes des branches LTS (long-term support) du Kernel Linux. Avec Android v8 (Oreo), Google a imposé l'utilisation de la version 4.4 ou supérieur du Kernel Linux. Par exemple Android v9 (Pie) fonctionne sur les versions 4.4, 4.9 ou 4.14 selon l'appareil. Plus d'info disponnible sur le wiki d'Android OS https://source.android.com/docs/core/architecture/kernel/android-common?hl=fr.
 
 `android-mainline` est la principale branche de développement des fonctionnalités Android. La ligne principale Linux est fusionnée avec `android-mainline` chaque fois que Linus Torvalds publie une version ou une version candidate :
 
@@ -89,21 +89,30 @@ Si vous ne connaissez pas Autopsy, voici une briève description :
 > Autopsy est un outil d'investigation numérique opensource. Il se rapporte à l'interface graphique du Sleuth Kit et d'autres outils de forensic. Il est utilisé pour analyser des disques durs et des smartphones dans le cadre d'enquêtes. Les fonctionnalités clés d'Autopsy incluent la récupération de fichiers supprimés, l'analyse des métadonnées, la recherche par mots-clés, la visualisation des timelines d'activités, et l'analyse des systèmes de fichiers etc.
 
 Pour l'utiliser, nous devons créer une "Case" :
-<div class="image2-container">
+
+![Autopsy](pictures/autopsy-case.png)
+
+<!-- <div class="image2-container">
     <div class="image">{{< figure src="pictures/autopsy-case.png" link="pictures/autopsy-case.png" width=620 >}}</div>
-</div>
+</div> -->
 
 Ici, nous savons que nous n'avons pas à faire à une "Disk Image" ou à une VM, de même pour un disque local. Nous choisissons donc l'option appropriée "Logical Files" : 
-<div class="image2-container">
+
+![Autopsy](pictures/autopsy-type.png)
+
+<!-- <div class="image2-container">
     <div class="image">{{< figure src="pictures/autopsy-type.png" link="pictures/autopsy-type.png" width=620 >}}</div>
-</div>
+</div> -->
 
 On attend qu'Autopsy & ses modules terminent l'ingestion. Cela peut prendre un moment.
 
 C'est bon, on peut commencer l'investigation :
-<div class="image2-container">
+
+![Autopsy](pictures/autopsy-ingestion.png)
+
+<!-- <div class="image2-container">
     <div class="image">{{< figure src="pictures/autopsy-ingestion.png" link="pictures/autopsy-ingestion.png" width=620 >}}</div>
-</div>
+</div> -->
 
 ## Questions
 
@@ -126,9 +135,12 @@ Mais aussi (mais non applicable sur ce challenge) ici :
 - ``/data/com.android.email/databases/EmailProvider.db`` (email accounts, 3rd party app data et les messages associés aux notifications par emails)
 
 Enfin bref, on se retrouve donc avec le rapport en format html : 
+
+![ALEAPP](pictures/aleapp.png)
+<!-- 
 <div class="image2-container">
     <div class="image">{{< figure src="pictures/aleapp.png" link="pictures/aleapp.png" width=720 >}}</div>
-</div>
+</div> -->
 
 On peut retrouver son adresse mail un peu partout. 
 
@@ -341,7 +353,7 @@ Ayant déjà vérifié toutes les images pour répondre à la question 9 j'ai d�
 **Réponse** : 
 ``98.24.12.45``
 
-![](pictures/success.png)
+![Success](pictures/success.png)
 
 
 
