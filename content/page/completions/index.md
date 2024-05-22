@@ -11,9 +11,9 @@ menu:
 Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des conférences et trainings auquels j'ai assisté.
 
 ## HackTheBox 
-### Sherlock (19%)
+### Sherlock 
 
-#### DFIR (26%)
+#### DFIR 
 <div class="image-container">
     <div class="image-item">{{< figure src="htb-opshieldwall2.webp" title="OpShieldWall-2" width=120 >}}</div>
     <div class="image-item">{{< figure src="htb-aptnightmare.webp" title="APT Nightmare" width=120 >}}</div>
@@ -30,12 +30,12 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
 </div>
 
 
-#### Cloud (50%)
+#### Cloud 
 <div class="image-container">
     <div class="image">{{< figure src="htb-nubilum-2.webp" title="Nubilum-2" link="https://labs.hackthebox.com/achievement/sherlock/1271052/573" width=120 >}}</div>
 </div>
 
-### Box (8/386)
+### Box
 <div class="image-container">
     <div class="image">{{< figure src="wifinetic.webp" title="Wifinetic" link="https://www.hackthebox.com/achievement/machine/1271052/563" width=120 >}}</div>
     <div class="image">{{< figure src="metatwo.webp" title="MetaTwo" link="https://www.hackthebox.com/achievement/machine/1271052/504" width=120 >}}</div>
@@ -69,7 +69,7 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
 
 
 ## Cyberdefenders
-### Network Forensics (63%)
+### Network Forensics 
 <div class="image-container">
     <div class="image">{{< figure src="PacketMaze.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/68/" width=150 >}}</div>
     <div class="image">{{< figure src="HawkEye.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/91/" width=150 >}}</div>
