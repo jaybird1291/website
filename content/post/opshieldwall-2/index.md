@@ -31,6 +31,55 @@ Cela nous laisse pas mal de marge de manœuvre, en effet, le /data contient éno
     <div class="image">{{< figure src="pictures/cheatsheet-sans-for585.png" title="Cheatsheet SANS FOR585" link="pictures/cheatsheet-sans-for585.png" width=320 >}}</div>
 </div>
 
+## Avant propos
+Avant de commencer, voici quelques informations importantes sur Android :
+
+Les données utilisateur peuvent être stockées en interne et en externe sur Android. Les données internes sont enregistrées dans la mémoire flash NAND, une mémoire non volatile qui conserve les données même en cas de coupure d'alimentation. La NAND stocke le bootloader, le système d'exploitation et les données utilisateur. Les données des applications sont stockées sur la mémoire flash NAND ou sur la carte SD. 
+
+Android est basé sur des variantes des branches LTS (long-term support) du Kernel Linux (en fonction de l'appareil). Avec Android v8 (Oreo), Google a imposé l'utilisation du Kernel Linux 4.4 (ou supérieur). Android v9 (Pie) fonctionne sur les versions 4.4, 4.9 ou 4.14 du Kernel Linux, selon l'appareil. Plus d'infi disponnible sur le wiki d'Android OS https://source.android.com/docs/core/architecture/kernel/android-common?hl=fr.
+
+`android-mainline` est la principale branche de développement des fonctionnalités Android. La ligne principale Linux est fusionnée avec `android-mainline` chaque fois que Linus Torvalds publie une version ou une version candidate :
+![Android Common Kemel Branching Model](pictures/android-branches.png)
+![Structure](pictures/android-structure.png)
+
+
+On retrouve principalement ces systèmes de fichiers  :
+- EXT4 
+- F2FS
+- YAFFS2
+- exFAT
+
+La plupart des artefacts sont des DB SQLite et des fichiers XML. Android isole les applications au niveau du Kernel, leur attribuant un identifiant unique (UID) pour suivre les applications exécutées.
+
+### Directory structure : 
+
+![Directory structure](pictures/directory-structure.png)
+
+- **/cache** : peut contenir des pièces jointes gmail, des téléchargements, des données de navigation et des mises à jour OTA 
+- **/efs** : contient des fichiers nécessaires au fonctionnement de l'appareil en cas de défaillance
+- **/data** :
+	- **/data/data** : contient les dossiers des applications (``/data/data/com.example.app``), les fichiers de configurations des apps, les DB SQLite des apps, leurs logs, cache etc.
+	- **/app** : contient des fichiers .apk du marché Android *Des malwares peuvent être trouvés ici
+	- **/backup** : stocke l'API de sauvegarde pour les développeurs donc les données de sauvegarde des utilisateurs ne sont pas stockées ici
+	- **/media** : l'emplacement de stockage interne équivalent à une carte SD. *Des malwares malveillants peuvent être trouvés ici
+	- **/misc** : les fichiers liés à Bluetooth, dhcp, vpn, Wi-Fi, etc. sont stockés ici
+	- **/system** : contient des fichiers clés tels que gesture.key et passwords.key ; le fichier accounts.db qui contient les usernames et les mots de passe pour l'authentification des fichiers etc.
+	- **/property** : contient les propriétés du système, y compris le fuseau horaire, les paramètres de langue, etc.
+- **/mnt** :
+	- **/asec** : stocke les données non chiffrés des apps
+	- **/DCIM** : stocke les thumbnails des albums
+	- **/Pictures** : stocke les images de l'appareil photo
+	- **/downloads** : fichiers téléchargés localement
+	- **/secure/asec** : stocke les données chiffrés des apps
+- **/system** : 
+	- **/app** : contient des fichiers .apk. *Des malwares peuvent être trouvés ici
+	- **/priv-app** : contient des fichiers & apk avec des permissions au niveau du système. *Des malwares peuvent être trouvés ici
+
+Pour avoir plus d'informations sur 
+- les permissions des app : https://developer.android.com/guide/topics/permissions/overview?hl=fr ; https://blog.mindorks.com/what-are-the-different-protection-levels-in-android-permission/
+- la CLI d'Android : https://developer.android.com/tools/adb?hl=fr
+
+
 ## Setup
 Au vu des fichiers et du scénario, je vais utiliser l'outil Autopsy. Cela peut prendre un peu de temps à ce setup, c'est pour cela que j'attaque cela ici. 
 
