@@ -13,17 +13,19 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
 ## HackTheBox 
 ### Sherlock 
 
-#### DFIR 
+#### DFIR / SOC / Malware Analysis 
+
 <div class="image-container">
+    <div class="image-item">{{< figure src="OpShieldWall6.png" title="OpShieldWall-6" width=120 >}}</div>
+    <div class="image-item">{{< figure src="OpShieldWall4.png" title="OpShieldWall-4" width=120 >}}</div>
     <div class="image-item">{{< figure src="htb-opshieldwall2.webp" title="OpShieldWall-2" width=120 >}}</div>
-    <div class="image-item">{{< figure src="htb-aptnightmare.webp" title="APT Nightmare" width=120 >}}</div>
     <div class="image-item">{{< figure src="opshieldwall1.webp" title="OpShieldWall-1" width=120 >}}</div>
     <div class="image-item">{{< figure src="htb-JingleBell.webp" title="Jingle Bell" link="https://labs.hackthebox.com/achievement/sherlock/1271052/613" width=120 >}}</div>
     <div class="image-item">{{< figure src="recollection.webp" title="Recollection" link="https://labs.hackthebox.com/achievement/sherlock/1271052/586" width=120 >}}</div>
-    <div class="image-item">{{< figure src="noted.webp" title="Noted" link="https://labs.hackthebox.com/achievement/sherlock/1271052/585" width=120 >}}</div>
 </div>
 
 <div class="image-container">
+    <div class="image-item">{{< figure src="noted.webp" title="Noted" link="https://labs.hackthebox.com/achievement/sherlock/1271052/585" width=120 >}}</div>
     <div class="image-item">{{< figure src="tracer.webp" title="Tracer" link="https://labs.hackthebox.com/achievement/sherlock/1271052/558" width=120 >}}</div>
     <div class="image-item">{{< figure src="logjammer.webp" title="Log Jammer" link="https://labs.hackthebox.com/achievement/sherlock/1271052/557" width=120 >}}</div>
     <div class="image-item">{{< figure src="rogueone.webp" title="Rogue One" link="https://labs.hackthebox.com/achievement/sherlock/1271052/569" width=120 >}}</div>
@@ -37,15 +39,17 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
 
 ### Box
 <div class="image-container">
+    <div class="image-item">{{< figure src="OpShieldWall5.png" title="OpShieldWall-5" width=120 >}}</div>
+    <div class="image-item">{{< figure src="OpShieldWall4.png" title="OpShieldWall-3" width=120 >}}</div>
     <div class="image">{{< figure src="wifinetic.webp" title="Wifinetic" link="https://www.hackthebox.com/achievement/machine/1271052/563" width=120 >}}</div>
     <div class="image">{{< figure src="metatwo.webp" title="MetaTwo" link="https://www.hackthebox.com/achievement/machine/1271052/504" width=120 >}}</div>
     <div class="image">{{< figure src="lame.webp" title="Lame" link="https://www.hackthebox.com/achievement/machine/1271052/1" width=120 >}}</div>
     <div class="image">{{< figure src="jerry.webp" title="Jerry" link="https://www.hackthebox.com/achievement/machine/1271052/144" width=120 >}}</div>
-    <div class="image">{{< figure src="netmon.webp" title="Netmon" link="https://www.hackthebox.com/achievement/machine/1271052/177" width=120 >}}</div>
-    <div class="image">{{< figure src="nibbles.webp" title="Nibbles" link="https://www.hackthebox.com/achievement/machine/1271052/121" width=120 >}}</div>
 </div>
 
 <div class="image-container">
+    <div class="image">{{< figure src="netmon.webp" title="Netmon" link="https://www.hackthebox.com/achievement/machine/1271052/177" width=120 >}}</div>
+    <div class="image">{{< figure src="nibbles.webp" title="Nibbles" link="https://www.hackthebox.com/achievement/machine/1271052/121" width=120 >}}</div>
     <div class="image">{{< figure src="precious.webp" title="Precious" link="https://www.hackthebox.com/achievement/machine/1271052/513" width=120 >}}</div>
     <div class="image">{{< figure src="blue.webp" title="Blue" link="https://www.hackthebox.com/achievement/machine/1271052/51" width=120 >}}</div>
 </div>
