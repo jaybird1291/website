@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on Jaybird1291</title><link>https://jaybird1291.github.io/website/page/</link><description>Recent content in Pages on Jaybird1291</description><generator>Hugo -- gohugo.io</generator><language>fr-FR</language><atom:link href="https://jaybird1291.github.io/website/page/index.xml" rel="self" type="application/rss+xml"/><item><title>Archives</title><link>https://jaybird1291.github.io/website/archives/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jaybird1291.github.io/website/archives/</guid><description/></item><item><title>Complétions</title><link>https://jaybird1291.github.io/website/completions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jaybird1291.github.io/website/completions/</guid><description>&lt;p>Liste de tous les challenges, labs, box etc. que j&amp;rsquo;ai effectué mais aussi des conférences et trainings auquels j&amp;rsquo;ai assisté.&lt;/p>
+&lt;h2 id="hackthebox">HackTheBox
+&lt;/h2>&lt;ul>
+&lt;li>Green = Easy&lt;/li>
+&lt;li>Orange = Medium&lt;/li>
+&lt;li>Red = Hard&lt;/li>
+&lt;/ul>
+&lt;p>Certaines images ne redirigent pas vers les pages de résultat d&amp;rsquo;HTB car se sont des boxs / sherlocks uniquement disponibles sur la plateforme HackTheBox Entreprise (qui ne permet pas de faire des liens de partage).&lt;/p>
+&lt;h3 id="sherlock">Sherlock
+&lt;/h3>&lt;h4 id="dfir--soc">DFIR / SOC
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/OpShieldWall4.png" srcset="https://jaybird1291.github.io/website/website/completions/OpShieldWall4_hu34c004155b8937fb422c631dece2b881_71951_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/OpShieldWall4_hu34c004155b8937fb422c631dece2b881_71951_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/OpShieldWall4_hu34c004155b8937fb422c631dece2b881_71951_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-4
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/htb-opshieldwall2.webp" srcset="https://jaybird1291.github.io/website/website/completions/htb-opshieldwall2_hu338666d61d0a23d198e15f383d7ed07d_56232_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/htb-opshieldwall2_hu338666d61d0a23d198e15f383d7ed07d_56232_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/htb-opshieldwall2_hu338666d61d0a23d198e15f383d7ed07d_56232_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-2
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/htb-opshieldwall1.webp" srcset="https://jaybird1291.github.io/website/website/completions/htb-opshieldwall1_hu651fdab8fdd77d0d57214da7ff4cb580_65608_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/htb-opshieldwall1_hu651fdab8fdd77d0d57214da7ff4cb580_65608_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/htb-opshieldwall1_hu651fdab8fdd77d0d57214da7ff4cb580_65608_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-1
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/613">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/htb-JingleBell.webp" srcset="https://jaybird1291.github.io/website/website/completions/htb-JingleBell_huf86587d846b9a57b0ccc3e927ae30c38_124500_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/htb-JingleBell_huf86587d846b9a57b0ccc3e927ae30c38_124500_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/htb-JingleBell_huf86587d846b9a57b0ccc3e927ae30c38_124500_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Jingle Bell
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/586">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/htb-recollection.webp" srcset="https://jaybird1291.github.io/website/website/completions/htb-recollection_huaf52fe3628d128a0a72e3d68047f28be_108764_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/htb-recollection_huaf52fe3628d128a0a72e3d68047f28be_108764_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/htb-recollection_huaf52fe3628d128a0a72e3d68047f28be_108764_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Recollection
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/585">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/htb-noted.webp" srcset="https://jaybird1291.github.io/website/website/completions/htb-noted_hu0fa39a53118c8373e85ec68e557f2373_73262_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/htb-noted_hu0fa39a53118c8373e85ec68e557f2373_73262_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/htb-noted_hu0fa39a53118c8373e85ec68e557f2373_73262_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Noted
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/558">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/htb-tracer.webp" srcset="https://jaybird1291.github.io/website/website/completions/htb-tracer_hu520f4bb0c4ae82a8559d4eeba4f7ebc5_74618_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/htb-tracer_hu520f4bb0c4ae82a8559d4eeba4f7ebc5_74618_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/htb-tracer_hu520f4bb0c4ae82a8559d4eeba4f7ebc5_74618_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Tracer
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/557">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/htb-logjammer.webp" srcset="https://jaybird1291.github.io/website/website/completions/htb-logjammer_hu716a420370cf9a5cf1bf6954c48e4bba_97214_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/htb-logjammer_hu716a420370cf9a5cf1bf6954c48e4bba_97214_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/htb-logjammer_hu716a420370cf9a5cf1bf6954c48e4bba_97214_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Log Jammer
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/569">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/htb-rogueone.webp" srcset="https://jaybird1291.github.io/website/website/completions/htb-rogueone_hu9e645dd3179de4d820862d2eb3a55c4c_111150_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/htb-rogueone_hu9e645dd3179de4d820862d2eb3a55c4c_111150_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/htb-rogueone_hu9e645dd3179de4d820862d2eb3a55c4c_111150_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Rogue One
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h4 id="malware-analysis">Malware Analysis
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/OpShieldWall6.png" srcset="https://jaybird1291.github.io/website/website/completions/OpShieldWall6_hu4e5609db87e09ea323c2f4170950ec9a_66930_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/OpShieldWall6_hu4e5609db87e09ea323c2f4170950ec9a_66930_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/OpShieldWall6_hu4e5609db87e09ea323c2f4170950ec9a_66930_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-6
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h4 id="cloud">Cloud
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/573">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/htb-nubilum-2.webp" srcset="https://jaybird1291.github.io/website/website/completions/htb-nubilum-2_hu182e597709789aa717362bdd50e86ac1_208154_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/htb-nubilum-2_hu182e597709789aa717362bdd50e86ac1_208154_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/htb-nubilum-2_hu182e597709789aa717362bdd50e86ac1_208154_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Nubilum-2
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h3 id="box">Box
+&lt;/h3>&lt;h4 id="linux">Linux
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/OpShieldWall5.png" srcset="https://jaybird1291.github.io/website/website/completions/OpShieldWall5_huaba977857168274626dd760ad850d343_99224_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/OpShieldWall5_huaba977857168274626dd760ad850d343_99224_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/OpShieldWall5_huaba977857168274626dd760ad850d343_99224_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-5
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/OpShieldWall4.png" srcset="https://jaybird1291.github.io/website/website/completions/OpShieldWall4_hu34c004155b8937fb422c631dece2b881_71951_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/OpShieldWall4_hu34c004155b8937fb422c631dece2b881_71951_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/OpShieldWall4_hu34c004155b8937fb422c631dece2b881_71951_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-3
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/Blurry.webp" srcset="https://jaybird1291.github.io/website/website/completions/Blurry_hu239791767582d5c6626d5b26dbacf8bd_35148_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/Blurry_hu239791767582d5c6626d5b26dbacf8bd_35148_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/Blurry_hu239791767582d5c6626d5b26dbacf8bd_35148_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+Blurry
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/598">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/Runner.webp" srcset="https://jaybird1291.github.io/website/website/completions/Runner_hubd7583d672b30803c4593907ec63a529_54488_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/Runner_hubd7583d672b30803c4593907ec63a529_54488_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/Runner_hubd7583d672b30803c4593907ec63a529_54488_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Runner
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/596">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/iclean.png" srcset="https://jaybird1291.github.io/website/website/completions/iclean_hu89ca7d2279d40c3bbf0e0b37df99cbf1_66530_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/iclean_hu89ca7d2279d40c3bbf0e0b37df99cbf1_66530_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/iclean_hu89ca7d2279d40c3bbf0e0b37df99cbf1_66530_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+IClean
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/590">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/Perfection.png" srcset="https://jaybird1291.github.io/website/website/completions/Perfection_hufb2ce78e5446f9d8eca127968acecdb6_57112_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/Perfection_hufb2ce78e5446f9d8eca127968acecdb6_57112_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/Perfection_hufb2ce78e5446f9d8eca127968acecdb6_57112_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Perfection
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/603">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/BoardLight.png" srcset="https://jaybird1291.github.io/website/website/completions/BoardLight_hu8624637d07852e1ab6bb6896392b228a_89999_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/BoardLight_hu8624637d07852e1ab6bb6896392b228a_89999_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/BoardLight_hu8624637d07852e1ab6bb6896392b228a_89999_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+BoardLight
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/594">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/Headless.png" srcset="https://jaybird1291.github.io/website/website/completions/Headless_hu0af0a9331b261b748d74539d4a51ce4e_63202_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/Headless_hu0af0a9331b261b748d74539d4a51ce4e_63202_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/Headless_hu0af0a9331b261b748d74539d4a51ce4e_63202_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Headless
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/563">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/wifinetic.webp" srcset="https://jaybird1291.github.io/website/website/completions/wifinetic_hu85d2155a4488cf171dac0c71eb18ca61_36688_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/wifinetic_hu85d2155a4488cf171dac0c71eb18ca61_36688_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/wifinetic_hu85d2155a4488cf171dac0c71eb18ca61_36688_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Wifinetic
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/504">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/metatwo.webp" srcset="https://jaybird1291.github.io/website/website/completions/metatwo_hu4d58fa6fb7036bf3e79820e9eb9a8529_53016_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/metatwo_hu4d58fa6fb7036bf3e79820e9eb9a8529_53016_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/metatwo_hu4d58fa6fb7036bf3e79820e9eb9a8529_53016_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+MetaTwo
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/1">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/lame.webp" srcset="https://jaybird1291.github.io/website/website/completions/lame_hu0504a0ccd1582fe2a5034d9ea8d65694_54388_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/lame_hu0504a0ccd1582fe2a5034d9ea8d65694_54388_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/lame_hu0504a0ccd1582fe2a5034d9ea8d65694_54388_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Lame
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/121">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/nibbles.webp" srcset="https://jaybird1291.github.io/website/website/completions/nibbles_huadb7e112c795c24fd9bf31e5152e5936_42092_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/nibbles_huadb7e112c795c24fd9bf31e5152e5936_42092_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/nibbles_huadb7e112c795c24fd9bf31e5152e5936_42092_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Nibbles
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/513">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/precious.webp" srcset="https://jaybird1291.github.io/website/website/completions/precious_huf1b8e6438348fd7145b400956bd04d53_49620_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/precious_huf1b8e6438348fd7145b400956bd04d53_49620_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/precious_huf1b8e6438348fd7145b400956bd04d53_49620_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Precious
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h4 id="windows">Windows
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/144">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/jerry.webp" srcset="https://jaybird1291.github.io/website/website/completions/jerry_hudb38a2da886f3d9668b23362c58229b4_38218_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/jerry_hudb38a2da886f3d9668b23362c58229b4_38218_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/jerry_hudb38a2da886f3d9668b23362c58229b4_38218_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Jerry
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/177">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/netmon.webp" srcset="https://jaybird1291.github.io/website/website/completions/netmon_huc7300e2062a3f730e96bdeb24684f534_43690_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/netmon_huc7300e2062a3f730e96bdeb24684f534_43690_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/netmon_huc7300e2062a3f730e96bdeb24684f534_43690_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Netmon
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/51">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/blue.webp" srcset="https://jaybird1291.github.io/website/website/completions/blue_hu129dd9f90c7258f3d6b5e71737b6b006_47254_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/blue_hu129dd9f90c7258f3d6b5e71737b6b006_47254_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/blue_hu129dd9f90c7258f3d6b5e71737b6b006_47254_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Blue
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="hackthebox-academy">HackTheBox Academy
+&lt;/h2>&lt;h3 id="modules">Modules
+&lt;/h3>&lt;p>&lt;a class="link" href="htb-academy-transcript.pdf" >Transcript.pdf&lt;/a>&lt;/p>
+&lt;br>
+&lt;h2 id="rootme">RootMe
+&lt;/h2>&lt;h3 id="réseaux-100-à-la-date-du-10052024">Réseaux (100% à la date du 10/05/2024)
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/website/website/completions/rootme-reseau.png"
+width="1074"
+height="696"
+srcset="https://jaybird1291.github.io/website/website/completions/rootme-reseau_hu740a5c7f7d8e472698abbc6a20c1a2d2_27956_480x0_resize_box_3.png 480w, https://jaybird1291.github.io/website/website/completions/rootme-reseau_hu740a5c7f7d8e472698abbc6a20c1a2d2_27956_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="154"
+data-flex-basis="370px"
+>
+&lt;br>&lt;/p>
+&lt;h3 id="forensic-57-à-la-date-du-10052024">Forensic (57% à la date du 10/05/2024))
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/website/website/completions/rootme-forensic.png"
+width="1074"
+height="696"
+srcset="https://jaybird1291.github.io/website/website/completions/rootme-forensic_hubbc1e6f5bafc482af15350b5c1811a43_114966_480x0_resize_box_3.png 480w, https://jaybird1291.github.io/website/website/completions/rootme-forensic_hubbc1e6f5bafc482af15350b5c1811a43_114966_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="154"
+data-flex-basis="370px"
+>
+&lt;br>&lt;/p>
+&lt;h2 id="cyberdefenders">Cyberdefenders
+&lt;/h2>&lt;h3 id="network-forensics">Network Forensics
+&lt;/h3>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/68/">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/PacketMaze.webp" srcset="https://jaybird1291.github.io/website/website/completions/PacketMaze_huf687795347581324c691a064df84e597_5876_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/PacketMaze_huf687795347581324c691a064df84e597_5876_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/PacketMaze_huf687795347581324c691a064df84e597_5876_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Medium
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/91/">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/HawkEye.webp" srcset="https://jaybird1291.github.io/website/website/completions/HawkEye_hu06183a4c22f06b46121716ab66bc13ea_5618_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/HawkEye_hu06183a4c22f06b46121716ab66bc13ea_5618_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/HawkEye_hu06183a4c22f06b46121716ab66bc13ea_5618_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Medium
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/153/">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/OpenWire.webp" srcset="https://jaybird1291.github.io/website/website/completions/OpenWire_huaf35e42285a67a577d9755d5b55abc63_5244_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/OpenWire_huaf35e42285a67a577d9755d5b55abc63_5244_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/OpenWire_huaf35e42285a67a577d9755d5b55abc63_5244_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Medium
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/170/">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/webinvestigation.webp" srcset="https://jaybird1291.github.io/website/website/completions/webinvestigation_hue7b22169657a16a5d86ca44bf5964037_5154_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/webinvestigation_hue7b22169657a16a5d86ca44bf5964037_5154_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/webinvestigation_hue7b22169657a16a5d86ca44bf5964037_5154_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/143/">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/PsExec_Hunt.webp" srcset="https://jaybird1291.github.io/website/website/completions/PsExec_Hunt_hu386cfa3d5de0ccc6938eba4892d3aa86_5198_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/PsExec_Hunt_hu386cfa3d5de0ccc6938eba4892d3aa86_5198_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/PsExec_Hunt_hu386cfa3d5de0ccc6938eba4892d3aa86_5198_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/146/">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/PoisonedCredentials.webp" srcset="https://jaybird1291.github.io/website/website/completions/PoisonedCredentials_hu4501cc38a9ba7378618cd5c475602efa_6988_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/PoisonedCredentials_hu4501cc38a9ba7378618cd5c475602efa_6988_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/PoisonedCredentials_hu4501cc38a9ba7378618cd5c475602efa_6988_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/149/">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/WebStrike.webp" srcset="https://jaybird1291.github.io/website/website/completions/WebStrike_huecfeb0fb7704ca873ebb1565abacace6_4906_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/WebStrike_huecfeb0fb7704ca873ebb1565abacace6_4906_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/WebStrike_huecfeb0fb7704ca873ebb1565abacace6_4906_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/135/">
+&lt;img src="https://jaybird1291.github.io/website/website/completions/Tomcat_Takeover.webp" srcset="https://jaybird1291.github.io/website/website/completions/Tomcat_Takeover_hu722d91f7cd1330c56fcdaeca0d650d3a_5954_360x0_resize_q75_h2_box_2.webp 360w, https://jaybird1291.github.io/website/website/completions/Tomcat_Takeover_hu722d91f7cd1330c56fcdaeca0d650d3a_5954_720x0_resize_q75_h2_box_2.webp 720w, https://jaybird1291.github.io/website/website/completions/Tomcat_Takeover_hu722d91f7cd1330c56fcdaeca0d650d3a_5954_1920x0_resize_q75_h2_box_2.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="tryhackme">TryHackMe
+&lt;/h2>&lt;h3 id="path">Path
+&lt;/h3>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/thm-ps.png" srcset="https://jaybird1291.github.io/website/website/completions/thm-ps_hud3fe7ec29195afc476960776ba3456fb_26535_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/thm-ps_hud3fe7ec29195afc476960776ba3456fb_26535_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/thm-ps_hud3fe7ec29195afc476960776ba3456fb_26535_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="250" />
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/thm-itcs.png" srcset="https://jaybird1291.github.io/website/website/completions/thm-itcs_hu888a50b24285c3dc441ba1076fee4eca_27406_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/thm-itcs_hu888a50b24285c3dc441ba1076fee4eca_27406_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/thm-itcs_hu888a50b24285c3dc441ba1076fee4eca_27406_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="250" />
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/thm-cb.png" srcset="https://jaybird1291.github.io/website/website/completions/thm-cb_hube2f07793223c8344dc9a24da6ca4f52_27546_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/thm-cb_hube2f07793223c8344dc9a24da6ca4f52_27546_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/thm-cb_hube2f07793223c8344dc9a24da6ca4f52_27546_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="250" />
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="conf--meetups">Conf &amp;amp; meetups
+&lt;/h2>&lt;h3 id="2023">2023
+&lt;/h3>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/hexacon.png" srcset="https://jaybird1291.github.io/website/website/completions/hexacon_huc91fa3a71d304e5bd3f752d554c963c4_27178_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/hexacon_huc91fa3a71d304e5bd3f752d554c963c4_27178_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/hexacon_huc91fa3a71d304e5bd3f752d554c963c4_27178_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="300" />
+&lt;figcaption>
+Hexacon
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/defconparis.png" srcset="https://jaybird1291.github.io/website/website/completions/defconparis_hud83178ae719534eb993433bcdd8beb50_196981_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/defconparis_hud83178ae719534eb993433bcdd8beb50_196981_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/defconparis_hud83178ae719534eb993433bcdd8beb50_196981_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="165" />
+&lt;figcaption>
+DEFCON Paris
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/lehack.png" srcset="https://jaybird1291.github.io/website/website/completions/lehack_hu38a7aeb1f297950b83f8bba28a071cb1_55746_360x0_resize_box_3.png 360w, https://jaybird1291.github.io/website/website/completions/lehack_hu38a7aeb1f297950b83f8bba28a071cb1_55746_720x0_resize_box_3.png 720w, https://jaybird1291.github.io/website/website/completions/lehack_hu38a7aeb1f297950b83f8bba28a071cb1_55746_1920x0_resize_box_3.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="320" />
+&lt;figcaption>
+LeHack
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/website/website/completions/meetuphtb.jpg" srcset="https://jaybird1291.github.io/website/website/completions/meetuphtb_hu9b359a5baf3254ab40fe8c865da21675_32571_360x0_resize_q75_box.jpg 360w, https://jaybird1291.github.io/website/website/completions/meetuphtb_hu9b359a5baf3254ab40fe8c865da21675_32571_720x0_resize_q75_box.jpg 720w, https://jaybird1291.github.io/website/website/completions/meetuphtb_hu9b359a5baf3254ab40fe8c865da21675_32571_1920x0_resize_q75_box.jpg 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="320" />
+&lt;figcaption>
+Meetups HTB France
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div></description></item><item><title>Recherche</title><link>https://jaybird1291.github.io/website/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jaybird1291.github.io/website/search/</guid><description/></item></channel></rss>
