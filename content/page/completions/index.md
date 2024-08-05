@@ -125,6 +125,8 @@ Certaines images ne redirigent pas vers les pages de résultat d'HTB car se sont
 </div>
 
 ## TryHackMe
+92 rooms complétés
+
 ### Path
 <div class="image-container">
     <div class="image">{{< figure src="thm-ps.png" width=250 >}}</div>
