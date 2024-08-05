@@ -24,8 +24,8 @@ Certaines images ne redirigent pas vers les pages de résultat d'HTB car se sont
 #### DFIR / SOC 
 
 <div class="image-container">
-    <div class="image-item">{{< figure src="htb-opshieldwall7.webp" title="OpShieldWall-7" link="https://labs.hackthebox.com/achievement/sherlock/1271052/612" width=120 >}}</div>
-    <div class="image-item">{{< figure src="htb-aptnightmare.webp" title="APTNightmare" width=120 >}}</div>
+    <div class="image-item">{{< figure src="htb-opshieldwall7.webp" title="OpShieldWall-7" width=120 >}}</div>
+    <div class="image-item">{{< figure src="htb-aptnightmare.webp" title="APTNightmare" link="https://labs.hackthebox.com/achievement/sherlock/1271052/612" width=120 >}}</div>
     <div class="image-item">{{< figure src="OpShieldWall4.png" title="OpShieldWall-4" width=120 >}}</div>
     <div class="image-item">{{< figure src="htb-opshieldwall2.webp" title="OpShieldWall-2" width=120 >}}</div>
     <div class="image-item">{{< figure src="opshieldwall1.webp" title="OpShieldWall-1" width=120 >}}</div>
