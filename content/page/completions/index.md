@@ -8,7 +8,7 @@ menu:
             icon: checkbox
 ---
 
-Liste de tous les challenges, labs, box etc. que j'ai effectué.
+Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des conférences et trainings auquels j'ai assisté.
 
 ## HackTheBox 
 ### Sherlock (19%)
@@ -78,7 +78,24 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué.
     <div class="image">{{< figure src="Tomcat_Takeover.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/135/" width=150 >}}</div>
 </div>
 
-<!-- ## Result
+## TryHackMe
+### Path
+<div class="image-container">
+    <div class="image">{{< figure src="thm-cd.png" width=270 >}}</div>
+    <div class="image">{{< figure src="thm-ps.png" width=270 >}}</div>
+    <div class="image">{{< figure src="thm-itcs.png" width=270 >}}</div>
+</div>
+<div class="image-container">
+    <div class="image">{{< figure src="thm-cb.png" width=270 >}}</div>
+</div>
 
-![Image 1](1.jpg) ![Image 2](2.jpg) -->
-
+## Conf & meetups
+### 2023
+<div class="image-container">
+    <div class="image">{{< figure src="hexacon.png" title="Hexacon" width=320 >}}</div>
+    <div class="image">{{< figure src="defconparis.png" title="DEFCON Paris" width=165 >}}</div>
+    <div class="image">{{< figure src="lehack.png" title="LeHack" width=320 >}}</div>
+</div>
+<div class="image-container">
+    <div class="image">{{< figure src="meetuphtb.jpg" title="Meetups HTB France" width=320 >}}</div>
+</div>
