@@ -51,7 +51,7 @@ On retrouve principalement ces systèmes de fichiers  :
 
 La plupart des artefacts sont des DB SQLite et des fichiers XML. Android isole les applications au niveau du Kernel, leur attribuant un identifiant unique (UID) pour suivre les applications exécutées.
 
-### Directory structure : 
+### Directory structure
 
 ![Directory structure](pictures/directory-structure.png)
 
