@@ -16,6 +16,8 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
 - Orange = Medium
 - Red = Hard
 
+Certaines images ne redirigent pas vers les pages de résultat d'HTB car se sont des boxs / sherlocks uniquement disponibles sur la plateforme HackTheBox Entreprise (qui ne permet pas de faire des liens de partage).
+
 ### Sherlock 
 
 #### DFIR / SOC 
@@ -51,19 +53,27 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
 <div class="image-container">
     <div class="image-item">{{< figure src="OpShieldWall5.png" title="OpShieldWall-5" width=120 >}}</div>
     <div class="image-item">{{< figure src="OpShieldWall4.png" title="OpShieldWall-3" width=120 >}}</div>
+    <div class="image-item">{{< figure src="iclean.png" title="IClean" link="https://www.hackthebox.com/achievement/machine/1271052/596" width=120 >}}</div>
+    <div class="image-item">{{< figure src="Perfection.png" title="Perfection" link="https://www.hackthebox.com/achievement/machine/1271052/590" width=120 >}}</div>
+    <div class="image-item">{{< figure src="BoardLight.png" title="BoardLight" link="https://www.hackthebox.com/achievement/machine/1271052/603" width=120 >}}</div>
+    <div class="image-item">{{< figure src="Headless.png" title="Headless" link="https://www.hackthebox.com/achievement/machine/1271052/596" width=120 >}}</div>
+
+
+</div>
+
+<div class="image-container">
     <div class="image">{{< figure src="wifinetic.webp" title="Wifinetic" link="https://www.hackthebox.com/achievement/machine/1271052/563" width=120 >}}</div>
     <div class="image">{{< figure src="metatwo.webp" title="MetaTwo" link="https://www.hackthebox.com/achievement/machine/1271052/504" width=120 >}}</div>
     <div class="image">{{< figure src="lame.webp" title="Lame" link="https://www.hackthebox.com/achievement/machine/1271052/1" width=120 >}}</div>
     <div class="image">{{< figure src="jerry.webp" title="Jerry" link="https://www.hackthebox.com/achievement/machine/1271052/144" width=120 >}}</div>
+    <div class="image">{{< figure src="netmon.webp" title="Netmon" link="https://www.hackthebox.com/achievement/machine/1271052/177" width=120 >}}</div>
+    <div class="image">{{< figure src="nibbles.webp" title="Nibbles" link="https://www.hackthebox.com/achievement/machine/1271052/121" width=120 >}}</div>
 </div>
 
 <div class="image-container">
-    <div class="image">{{< figure src="netmon.webp" title="Netmon" link="https://www.hackthebox.com/achievement/machine/1271052/177" width=120 >}}</div>
-    <div class="image">{{< figure src="nibbles.webp" title="Nibbles" link="https://www.hackthebox.com/achievement/machine/1271052/121" width=120 >}}</div>
     <div class="image">{{< figure src="precious.webp" title="Precious" link="https://www.hackthebox.com/achievement/machine/1271052/513" width=120 >}}</div>
     <div class="image">{{< figure src="blue.webp" title="Blue" link="https://www.hackthebox.com/achievement/machine/1271052/51" width=120 >}}</div>
 </div>
-
 
 ## HackTheBox Academy
 ### Modules
