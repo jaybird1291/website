@@ -42,9 +42,6 @@ Android est basé sur des variantes des branches LTS (long-term support) du Kern
 
 ![Android Common Kemel Branching Model](pictures/android-branches.png)
 
-![Structure](pictures/android-structure.png)
-
-
 On retrouve principalement ces systèmes de fichiers  :
 - EXT4 
 - F2FS
@@ -52,6 +49,42 @@ On retrouve principalement ces systèmes de fichiers  :
 - exFAT
 
 La plupart des artefacts sont des DB SQLite et des fichiers XML. Android isole les applications au niveau du Kernel, leur attribuant un identifiant unique (UID) pour suivre les applications exécutées.
+
+### Android Architecture
+
+![Architecture](pictures/android-architecture.png)
+
+- Le noyau Linux constitue la base d'Android, supportant des fonctionnalités cruciales telles que les threads et la gestion de la mémoire de bas niveau utilisées par Android Runtime (ART).
+
+- Le HAL fournit des interfaces standardisées qui exposent les fonctionnalités matérielles aux API Java de niveau supérieur. Il est composé de modules de bibliothèque spécifiques à chaque composant matériel (comme la caméra ou le Bluetooth). Lorsqu'une API accède au matériel, Android charge le module de bibliothèque correspondant
+
+- L'environnement d'exécution Android (Android Runtime dit ART) exécute chaque application dans son propre processus et instance. Gérant plusieurs machines virtuelles sur des appareils à faible mémoire grâce au bytecode DEX spécialement conçu et optimisé pour Android. Les outils de compilation comme d8 transforment le code Java en bytecode DEX pour l'exécution sur Android.
+
+- De nombreux composants et services système Android essentiels, tels qu'ART et HAL, sont créés à partir de code natif nécessitant des bibliothèques natives écrites en C et C++. 
+
+- Les fonctionnalités d'Android sont accessibles via des API Java, facilitant la réutilisation des principaux composants et services système modulaires comme les notifications, la gestion des ressources et la localisation.
+
+- Les applications système sont l'ensemble des applications de base fournies avec Android. 
+
+### Android Virtual Machine
+
+![Android Virtual Machine](pictures/android-vm.png)
+
+- Les VM sont utilisés comme couches d'abstraction entre une application et l'appareil Android sous-jacent.
+
+- Chaque application fonctionne dans sa propre instance dans une VM, isolant les applications les unes des autres.
+
+- Les applications Android sont écrites en Java mais sont compilées et compilées en bytecode Java.
+
+- Ce bytecode est ensuite transformé en bytecode Dalvik (fichiers .dex) ou bytecode ART.
+
+- Dalvik et ART exécutent le bytecode (.dex) dans une machine virtuelle, permettant aux applications de fonctionner indépendamment du matériel sous-jacent.
+
+- Avant KitKat (v.4.4), Android utilisait des VM Dalvik.
+
+- Avec Lollipop (v5.0), Android a commencé à utiliser Android Runtime (ART) et a cessé d'utiliser la VM Dalvik.
+
+- Les deux environnements d'exécution Dalvik et ART fonctionnent avec le bytecode DEX, mais ART possède de nouvelles fonctionnalités d'optimisation. 
 
 ### Directory structure
 
