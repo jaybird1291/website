@@ -39,7 +39,9 @@ Les données utilisateur peuvent être stockées en interne et en externe sur An
 Android est basé sur des variantes des branches LTS (long-term support) du Kernel Linux (en fonction de l'appareil). Avec Android v8 (Oreo), Google a imposé l'utilisation du Kernel Linux 4.4 (ou supérieur). Android v9 (Pie) fonctionne sur les versions 4.4, 4.9 ou 4.14 du Kernel Linux, selon l'appareil. Plus d'infi disponnible sur le wiki d'Android OS https://source.android.com/docs/core/architecture/kernel/android-common?hl=fr.
 
 `android-mainline` est la principale branche de développement des fonctionnalités Android. La ligne principale Linux est fusionnée avec `android-mainline` chaque fois que Linus Torvalds publie une version ou une version candidate :
+
 ![Android Common Kemel Branching Model](pictures/android-branches.png)
+
 ![Structure](pictures/android-structure.png)
 
 
