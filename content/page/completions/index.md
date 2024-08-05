@@ -11,6 +11,11 @@ menu:
 Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des conférences et trainings auquels j'ai assisté.
 
 ## HackTheBox 
+
+- Green = Easy
+- Orange = Medium
+- Red = Hard
+
 ### Sherlock 
 
 #### DFIR / SOC 
@@ -21,10 +26,10 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
     <div class="image-item">{{< figure src="opshieldwall1.webp" title="OpShieldWall-1" width=120 >}}</div>
     <div class="image-item">{{< figure src="htb-JingleBell.webp" title="Jingle Bell" link="https://labs.hackthebox.com/achievement/sherlock/1271052/613" width=120 >}}</div>
     <div class="image-item">{{< figure src="recollection.webp" title="Recollection" link="https://labs.hackthebox.com/achievement/sherlock/1271052/586" width=120 >}}</div>
+    <div class="image-item">{{< figure src="noted.webp" title="Noted" link="https://labs.hackthebox.com/achievement/sherlock/1271052/585" width=120 >}}</div>
 </div>
 
 <div class="image-container">
-    <div class="image-item">{{< figure src="noted.webp" title="Noted" link="https://labs.hackthebox.com/achievement/sherlock/1271052/585" width=120 >}}</div>
     <div class="image-item">{{< figure src="tracer.webp" title="Tracer" link="https://labs.hackthebox.com/achievement/sherlock/1271052/558" width=120 >}}</div>
     <div class="image-item">{{< figure src="logjammer.webp" title="Log Jammer" link="https://labs.hackthebox.com/achievement/sherlock/1271052/557" width=120 >}}</div>
     <div class="image-item">{{< figure src="rogueone.webp" title="Rogue One" link="https://labs.hackthebox.com/achievement/sherlock/1271052/569" width=120 >}}</div>
