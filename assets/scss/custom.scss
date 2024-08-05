@@ -1,3 +1,15 @@
 /*
     You can add your own custom styles here.
 */
+
+.image-container {
+    display: flex;
+    justify-content: start;
+    gap: 85px;
+}
+
+.image {
+    display:flex;
+    justify-content: start;
+    padding-left: 5px;
+}

@@ -1,20 +1,14 @@
 ---
-title: Hello World
-description: Welcome to Hugo Theme Stack
-slug: hello-world
-date: 2022-03-06 00:00:00+0000
-image: cover.jpg
+title: OpShieldWall-1
+description: 🛜 Forensic réseau d'un WiFi compromis
+slug: opshieldwall-1
+date: 2024-05-04 00:19:05+0000
 categories:
-    - Example Category
+    - Sherlock
+    - Easy
 tags:
-    - Example Tag
-weight: 1       # You can add weight to some posts to override the default sorting (date descending)
+    - DFIR
+    - Wireshark
+# weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
-
-Welcome to Hugo theme Stack. This is your first post. Edit or delete it, then start writing!
-
-For more information about this theme, check the documentation: https://stack.jimmycai.com/
-
-Want a site like this? Check out [hugo-theme-stack-stater](https://github.com/CaiJimmy/hugo-theme-stack-starter)
-
-> Photo by [Pawel Czerwinski](https://unsplash.com/@pawel_czerwinski) on [Unsplash](https://unsplash.com/)
+Publication du writeup lorsque le challenge sera en "retired".
