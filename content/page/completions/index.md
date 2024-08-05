@@ -13,10 +13,9 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
 ## HackTheBox 
 ### Sherlock 
 
-#### DFIR / SOC / Malware Analysis 
+#### DFIR / SOC 
 
 <div class="image-container">
-    <div class="image-item">{{< figure src="OpShieldWall6.png" title="OpShieldWall-6" width=120 >}}</div>
     <div class="image-item">{{< figure src="OpShieldWall4.png" title="OpShieldWall-4" width=120 >}}</div>
     <div class="image-item">{{< figure src="htb-opshieldwall2.webp" title="OpShieldWall-2" width=120 >}}</div>
     <div class="image-item">{{< figure src="opshieldwall1.webp" title="OpShieldWall-1" width=120 >}}</div>
@@ -29,6 +28,12 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
     <div class="image-item">{{< figure src="tracer.webp" title="Tracer" link="https://labs.hackthebox.com/achievement/sherlock/1271052/558" width=120 >}}</div>
     <div class="image-item">{{< figure src="logjammer.webp" title="Log Jammer" link="https://labs.hackthebox.com/achievement/sherlock/1271052/557" width=120 >}}</div>
     <div class="image-item">{{< figure src="rogueone.webp" title="Rogue One" link="https://labs.hackthebox.com/achievement/sherlock/1271052/569" width=120 >}}</div>
+</div>
+
+#### Malware Analysis
+
+<div class="image-container">
+    <div class="image-item">{{< figure src="OpShieldWall6.png" title="OpShieldWall-6" width=120 >}}</div>
 </div>
 
 
