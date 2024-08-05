@@ -93,6 +93,7 @@ Certaines images ne redirigent pas vers les pages de résultat d'HTB car se sont
 <br>
 
 ## RootMe
+2045 points (105 challenges)
 ![](rootme-validations.png)
 ### Réseaux (100% à la date du 10/05/2024)
 ![](rootme-reseau.png)
