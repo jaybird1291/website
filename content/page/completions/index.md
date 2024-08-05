@@ -98,7 +98,7 @@ Certaines images ne redirigent pas vers les pages de résultat d'HTB car se sont
 <br>
 
 
-### Forensic (57% à la date du 10/05/2024))
+### Forensic (62% à la date du 23/07/2024))
 ![](rootme-forensic.png)
 <br>
 
