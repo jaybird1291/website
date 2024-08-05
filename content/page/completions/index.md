@@ -12,9 +12,10 @@ Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des c
 
 ## HackTheBox 
 
-- Green = Easy
-- Orange = Medium
+- Iron = Insane
 - Red = Hard
+- Orange = Medium
+- Green = Easy
 
 Certaines images ne redirigent pas vers les pages de résultat d'HTB car se sont des boxs / sherlocks uniquement disponibles sur la plateforme HackTheBox Entreprise (qui ne permet pas de faire des liens de partage).
 
@@ -23,16 +24,16 @@ Certaines images ne redirigent pas vers les pages de résultat d'HTB car se sont
 #### DFIR / SOC 
 
 <div class="image-container">
+    <div class="image-item">{{< figure src="htb-opshieldwall7.webp" title="OpShieldWall-7" width=120 >}}</div>
     <div class="image-item">{{< figure src="htb-aptnightmare.webp" title="APTNightmare" width=120 >}}</div>
     <div class="image-item">{{< figure src="OpShieldWall4.png" title="OpShieldWall-4" width=120 >}}</div>
     <div class="image-item">{{< figure src="htb-opshieldwall2.webp" title="OpShieldWall-2" width=120 >}}</div>
     <div class="image-item">{{< figure src="opshieldwall1.webp" title="OpShieldWall-1" width=120 >}}</div>
     <div class="image-item">{{< figure src="htb-JingleBell.webp" title="Jingle Bell" link="https://labs.hackthebox.com/achievement/sherlock/1271052/613" width=120 >}}</div>
-    <div class="image-item">{{< figure src="recollection.webp" title="Recollection" link="https://labs.hackthebox.com/achievement/sherlock/1271052/586" width=120 >}}</div>
-
 </div>
 
 <div class="image-container">
+    <div class="image-item">{{< figure src="recollection.webp" title="Recollection" link="https://labs.hackthebox.com/achievement/sherlock/1271052/586" width=120 >}}</div>
     <div class="image-item">{{< figure src="noted.webp" title="Noted" link="https://labs.hackthebox.com/achievement/sherlock/1271052/585" width=120 >}}</div>
     <div class="image-item">{{< figure src="tracer.webp" title="Tracer" link="https://labs.hackthebox.com/achievement/sherlock/1271052/558" width=120 >}}</div>
     <div class="image-item">{{< figure src="logjammer.webp" title="Log Jammer" link="https://labs.hackthebox.com/achievement/sherlock/1271052/557" width=120 >}}</div>
