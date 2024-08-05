@@ -13,5 +13,4 @@ tags:
 # weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
-
-Publication du writeup lorsque le challenge sera en "retired" (14/06/2024).
+Publication du writeup lorsque le challenge sera retired (14/06/2024).
