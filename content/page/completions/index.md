@@ -59,7 +59,7 @@ Certaines images ne redirigent pas vers les pages de résultat d'HTB car se sont
 <div class="image-container">
     <div class="image-item">{{< figure src="OpShieldWall5.png" title="OpShieldWall-5" width=120 >}}</div>
     <div class="image-item">{{< figure src="OpShieldWall4.png" title="OpShieldWall-3" width=120 >}}</div>
-    <div class="image-item">{{< figure src="Blurry.webp" title="Blurry" link="" width=120 >}}</div>
+    <div class="image-item">{{< figure src="Blurry.webp" title="Blurry" link="https://www.hackthebox.com/achievement/machine/1271052/605" width=120 >}}</div>
     <div class="image-item">{{< figure src="Runner.webp" title="Runner" link="https://www.hackthebox.com/achievement/machine/1271052/598" width=120 >}}</div>
     <div class="image-item">{{< figure src="iclean.png" title="IClean" link="https://www.hackthebox.com/achievement/machine/1271052/596" width=120 >}}</div>
     <div class="image-item">{{< figure src="Perfection.png" title="Perfection" link="https://www.hackthebox.com/achievement/machine/1271052/590" width=120 >}}</div>
