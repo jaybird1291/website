@@ -1,6 +1,6 @@
 # Change baseurl before deploy
-baseurl = "https://jaybird1291.github.io/website/"
-languageCode = "fr-FR"
+baseurl = "https://jaybird1291.github.io/"
+# languageCode = "fr-FR"
 paginate = 5
 title = "Jaybird1291"
 
@@ -14,4 +14,34 @@ hasCJKLanguage = false
 
 # Change it to your Disqus shortname before using
 # disqusShortname = "hugo-theme-stack"
+
+[languages]
+  [languages.fr]
+  languageName = "Français"
+  contentDir = "content/fr"
+  weight = 1
+
+    [languages.fr.params.sidebar]
+    emoji = "❤️"
+    subtitle = "Étudiant à l'École2600 - Axé sur la Forensic, l'Incident Response et les challenges Réseaux et Radio."
+    contentDir = "content/fr"
+
+  [languages.en]
+  languageName = "English"
+  contentDir = "content/en"
+  weight = 2
+
+    [languages.en.params.sidebar]
+    emoji = "❤️"
+    subtitle = "Student at École2600 - Focused on Forensics, Incident Response, and Network & Radio challenges."
+    contentDir = "content/en"
+
+  [languages.ja]
+  contentDir = "content/ja"
+  languageName = "日本語"
+  weight = 3
+
+    [languages.ja.params.sidebar]
+    emoji = "❤️"
+    subtitle = "École2600の学生 - フォレンジック、インシデント対応、ネットワーク＆ラジオチャレンジに集中しています。"
 
