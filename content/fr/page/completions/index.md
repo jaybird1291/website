@@ -8,7 +8,7 @@ menu:
             icon: checkbox
 ---
 
-Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des conférences et trainings auquels j'ai assisté.
+Liste de tous les challenges, labs, box etc. que j'ai effectué mais aussi des cours, conférences et trainings auquels j'ai assisté.
 
 ## HackTheBox 
 
@@ -134,6 +134,15 @@ Certaines images ne redirigent pas vers les pages de résultat d'HTB car se sont
     <div class="image">{{< figure src="thm-cb.png" width=250 >}}</div>
 </div>
 
+## Cours
+- **Kaspersky** : Advanced Malware Analysis Techniques 
+- **Kaspersky** : Hunting APTs like a Ninja with YARA
+- **OALABS** : Reverse Engineering 101 (RE101)
+- **Roman Stuehler** : Android App Hacking - Black Belt Edition
+- **Pentherz** : Intro to SDR Hacking 
+- **Christopher Negus** : Linux Bible
+- **OSINT (Open Source Intelligence Techniques)** : IntelTechniques
+- **Opdisk** : The Cyber Plumber's Handbook
 
 ## Conf & meetups
 ### 2023

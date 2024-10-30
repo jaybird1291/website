@@ -134,6 +134,15 @@ Some images do not link to the HTB result pages as they are boxes/Sherlocks only
     <div class="image">{{< figure src="thm-cb.png" width=250 >}}</div>
 </div>
 
+## Cours
+- **Kaspersky**: Advanced Malware Analysis Techniques 
+- **Kaspersky**: Hunting APTs like a Ninja with YARA
+- **OALABS**: Reverse Engineering 101 (RE101)
+- **Roman Stuehler**: Android App Hacking - Black Belt Edition
+- **Pentherz**: Intro to SDR Hacking 
+- **Christopher Negus**: Linux Bible
+- **OSINT (Open Source Intelligence Techniques)**: IntelTechniques
+- **Opdisk**: The Cyber Plumber's Handbook
 
 ## Conf & meetups
 ### 2023

@@ -132,6 +132,15 @@ menu:
     <div class="image">{{< figure src="thm-cb.png" width=250 >}}</div>
 </div>
 
+## コース 
+- **Kaspersky**: Advanced Malware Analysis Techniques （高度なマルウェア分析技術）
+- **Kaspersky**: Hunting APTs like a Ninja with YARA （YARAを使った忍者のようなAPT追跡）
+- **OALABS**: Reverse Engineering 101 (RE101) （リバースエンジニアリング101）
+- **Roman Stuehler**: Android App Hacking - Black Belt Edition （Androidアプリハッキング - ブラックベルト版）
+- **Pentherz**: Intro to SDR Hacking （SDRハッキング入門）
+- **Christopher Negus**: Linux Bible （リナックスバイブル）
+- **OSINT**: (Open Source Intelligence Techniques) : IntelTechniques （オープンソースインテリジェンステクニック）
+- **Opdisk**: The Cyber Plumber's Handbook （サイバープランバーのハンドブック）
 
 ## 会議とミートアップ
 ### 2023年
