@@ -1,0 +1,1360 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jaybird1291</title><link>https://jaybird1291.github.io/blog/en/</link><description>Recent content on Jaybird1291</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 19 May 2024 08:00:05 +0000</lastBuildDate><atom:link href="https://jaybird1291.github.io/blog/en/index.xml" rel="self" type="application/rss+xml"/><item><title>OpShieldWall-2</title><link>https://jaybird1291.github.io/blog/en/p/opshieldwall-2/</link><pubDate>Sun, 19 May 2024 08:00:05 +0000</pubDate><guid>https://jaybird1291.github.io/blog/en/p/opshieldwall-2/</guid><description>&lt;img src="https://jaybird1291.github.io/blog/en/p/opshieldwall-2/OpShieldWall-2.jpg" alt="Featured image of post OpShieldWall-2" />&lt;h2 id="scenario">Scenario
+&lt;/h2>&lt;blockquote>
+&lt;p>We have successfully confirmed the location of the malicious actor who compromised our government’s WiFi network.&lt;/p>
+&lt;p>Recently, a dawn raid was conducted as part of OP ERADICATE at an address in the Velorian capital, resulting in the seizure of a substantial amount of evidence. Notably, an Android device belonging to the agent was confiscated, and it is believed to have been at the scene of the attack.&lt;/p>
+&lt;p>We require your expertise to analyze this device and answer the detailed questions below. Time is limited; a Velorian COBR meeting has been organized to discuss your findings&amp;hellip;&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="files">Files
+&lt;/h2>&lt;ul>
+&lt;li>&lt;code>opshieldwall2.zip&lt;/code> containing &amp;ldquo;EVIDENCE-CASE-RAVENSKIAN-AGENT-002,&amp;rdquo; which includes the &amp;ldquo;data&amp;rdquo; and &amp;ldquo;storage&amp;rdquo; folders of an Android device.&lt;/li>
+&lt;/ul>
+&lt;p>This provides a significant amount of room for analysis, as the /data directory contains a wealth of information, such as:&lt;/p>
+&lt;div class="image2-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="pictures/cheatsheet-sans-for585.png">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/cheatsheet-sans-for585.png" srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/cheatsheet-sans-for585_hu16155672487987992094.png 360w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/cheatsheet-sans-for585_hu11289631915745235764.png 720w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/cheatsheet-sans-for585_hu12009676279544424470.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="320" />
+&lt;/a>
+&lt;figcaption>
+Cheatsheet SANS FOR585
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="foreword">Foreword
+&lt;/h2>&lt;p>Before we begin, here is some important information about Android:&lt;/p>
+&lt;p>User data on Android can be stored both internally and externally. Internal data is saved in NAND flash memory, a non-volatile memory that retains data even when the power is off. NAND stores the bootloader, the operating system, and user data. Application data is stored on NAND flash memory or on the SD card.&lt;/p>
+&lt;p>Android is based on variants of the Long-Term Support (LTS) branches of the Linux Kernel. With Android v8 (Oreo), Google required the use of Linux Kernel version 4.4 or higher. For example, Android v9 (Pie) runs on versions 4.4, 4.9, or 4.14, depending on the device. More information is available on the Android OS wiki: &lt;a class="link" href="https://source.android.com/docs/core/architecture/kernel/android-common?hl=en" target="_blank" rel="noopener"
+>https://source.android.com/docs/core/architecture/kernel/android-common?hl=en&lt;/a>.&lt;/p>
+&lt;p>&lt;code>android-mainline&lt;/code> is the primary development branch for Android features. The mainline Linux branch is merged with &lt;code>android-mainline&lt;/code> every time Linus Torvalds releases a version or release candidate:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-branches.png"
+width="932"
+height="720"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-branches_hu11681531264120324004.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-branches_hu8683411598684431168.png 1024w"
+loading="lazy"
+alt="Android Common Kemel Branching Model"
+class="gallery-image"
+data-flex-grow="129"
+data-flex-basis="310px"
+>&lt;/p>
+&lt;p>Commonly found file systems include:&lt;/p>
+&lt;ul>
+&lt;li>EXT4&lt;/li>
+&lt;li>F2FS&lt;/li>
+&lt;li>YAFFS2&lt;/li>
+&lt;li>exFAT&lt;/li>
+&lt;/ul>
+&lt;p>Most artifacts are stored as SQLite databases and XML files. Android isolates applications at the kernel level, assigning each one a unique identifier (UID) to track running applications.&lt;/p>
+&lt;h3 id="android-architecture">Android Architecture
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-architecture.png"
+width="549"
+height="815"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-architecture_hu8710287640414005145.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-architecture_hu7157129161549664279.png 1024w"
+loading="lazy"
+alt="Architecture"
+class="gallery-image"
+data-flex-grow="67"
+data-flex-basis="161px"
+>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>The Linux kernel forms the foundation of Android, supporting essential features like threads and low-level memory management used by Android Runtime (ART).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The Hardware Abstraction Layer (HAL) provides standardized interfaces that expose hardware functionality to higher-level Java APIs. It consists of library modules specific to each hardware component (such as the camera or Bluetooth). When an API accesses hardware, Android loads the corresponding library module.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The Android Runtime (ART) environment runs each application in its own process and instance. ART manages multiple virtual machines on low-memory devices, using DEX bytecode specially designed and optimized for Android. Compilation tools like d8 transform Java code into DEX bytecode for execution on Android.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Many essential Android system components and services, such as ART and HAL, are created from native code requiring native libraries written in C and C++.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Android&amp;rsquo;s features are accessible via Java APIs, facilitating the reuse of key modular system components and services like notifications, resource management, and localization.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>System applications are the core set of apps that come with Android.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="android-virtual-machine">Android Virtual Machine
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-vm.png"
+width="235"
+height="258"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-vm_hu9996704157503076210.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-vm_hu12750818963076190994.png 1024w"
+loading="lazy"
+alt="Android Virtual Machine"
+class="gallery-image"
+data-flex-grow="91"
+data-flex-basis="218px"
+>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Virtual Machines (VMs) act as abstraction layers between an application and the underlying Android device.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Each application runs in its own instance within a VM, isolating it from other applications.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Android applications are written in Java but are compiled into Java bytecode.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>This bytecode is then transformed into Dalvik bytecode (.dex files) or ART bytecode.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Dalvik and ART run the bytecode (.dex) in a virtual machine, allowing applications to function independently of the underlying hardware.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Before KitKat (v.4.4), Android used Dalvik VMs.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Starting with Lollipop (v5.0), Android began using Android Runtime (ART) and phased out Dalvik VM.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Both Dalvik and ART use DEX bytecode, but ART includes new optimization features.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="directory-structure">Directory Structure
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/directory-structure.png"
+width="691"
+height="682"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/directory-structure_hu1759560322735221499.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/directory-structure_hu3151186207932460450.png 1024w"
+loading="lazy"
+alt="Directory structure"
+class="gallery-image"
+data-flex-grow="101"
+data-flex-basis="243px"
+>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>/cache&lt;/strong>: Can contain Gmail attachments, downloads, browsing data, and OTA updates.&lt;/li>
+&lt;li>&lt;strong>/efs&lt;/strong>: Contains files necessary for device operation in case of failure.&lt;/li>
+&lt;li>&lt;strong>/data&lt;/strong>:
+&lt;ul>
+&lt;li>&lt;strong>/data/data&lt;/strong>: Contains application folders (&lt;code>/data/data/com.example.app&lt;/code>), app configuration files, SQLite databases, logs, cache, etc.&lt;/li>
+&lt;li>&lt;strong>/app&lt;/strong>: Stores .apk files from the Android market. *Malware may be found here.&lt;/li>
+&lt;li>&lt;strong>/backup&lt;/strong>: Stores backup APIs for developers; user backup data is not stored here.&lt;/li>
+&lt;li>&lt;strong>/media&lt;/strong>: Internal storage equivalent to an SD card. *Malware may be found here.&lt;/li>
+&lt;li>&lt;strong>/misc&lt;/strong>: Stores files related to Bluetooth, DHCP, VPN, Wi-Fi, etc.&lt;/li>
+&lt;li>&lt;strong>/system&lt;/strong>: Contains key files such as &lt;code>gesture.key&lt;/code> and &lt;code>passwords.key&lt;/code>; the &lt;code>accounts.db&lt;/code> file, which stores usernames and passwords for file authentication, etc.&lt;/li>
+&lt;li>&lt;strong>/property&lt;/strong>: Stores system properties, including timezone, language settings, etc.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>/mnt&lt;/strong>:
+&lt;ul>
+&lt;li>&lt;strong>/asec&lt;/strong>: Stores unencrypted app data.&lt;/li>
+&lt;li>&lt;strong>/DCIM&lt;/strong>: Stores album thumbnails.&lt;/li>
+&lt;li>&lt;strong>/Pictures&lt;/strong>: Stores camera images.&lt;/li>
+&lt;li>&lt;strong>/downloads&lt;/strong>: Locally downloaded files.&lt;/li>
+&lt;li>&lt;strong>/secure/asec&lt;/strong>: Stores encrypted app data.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>/system&lt;/strong>:
+&lt;ul>
+&lt;li>&lt;strong>/app&lt;/strong>: Contains .apk files. *Malware may be found here.&lt;/li>
+&lt;li>&lt;strong>/priv-app&lt;/strong>: Contains .apk files with system-level permissions. *Malware may be found here.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>For more information on:&lt;/p>
+&lt;ul>
+&lt;li>App permissions: &lt;a class="link" href="https://developer.android.com/guide/topics/permissions/overview?hl=en" target="_blank" rel="noopener"
+>https://developer.android.com/guide/topics/permissions/overview?hl=en&lt;/a>, &lt;a class="link" href="https://blog.mindorks.com/what-are-the-different-protection-levels-in-android-permission/" target="_blank" rel="noopener"
+>https://blog.mindorks.com/what-are-the-different-protection-levels-in-android-permission/&lt;/a>&lt;/li>
+&lt;li>Android CLI: &lt;a class="link" href="https://developer.android.com/tools/adb?hl=en" target="_blank" rel="noopener"
+>https://developer.android.com/tools/adb?hl=en&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="setup">Setup
+&lt;/h2>&lt;p>Given the files and the scenario, I will use the Autopsy tool. Setting it up may take some time, so I’m starting with it here.&lt;/p>
+&lt;p>If you&amp;rsquo;re unfamiliar with Autopsy, here’s a brief description:&lt;/p>
+&lt;blockquote>
+&lt;p>Autopsy is an open-source digital investigation tool. It serves as the graphical interface for the Sleuth Kit and other forensic tools. It is commonly used to analyze hard drives and smartphones in the context of investigations. Key features of Autopsy include deleted file recovery, metadata analysis, keyword searching, timeline visualization, file system analysis, and more.&lt;/p>
+&lt;/blockquote>
+&lt;p>To use it, we need to create a &amp;ldquo;Case&amp;rdquo;:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case.png"
+width="782"
+height="468"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case_hu6083939050916543242.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case_hu10757773130814133319.png 1024w"
+loading="lazy"
+alt="Autopsy"
+class="gallery-image"
+data-flex-grow="167"
+data-flex-basis="401px"
+>&lt;/p>
+&lt;!-- &lt;div class="image2-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="pictures/autopsy-case.png">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case.png" srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case_hu10571252955474266221.png 360w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case_hu12163003742284739222.png 720w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case_hu15699116795484705861.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="620" />
+&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;/div> -->
+&lt;p>Here, we know we’re not dealing with a &amp;ldquo;Disk Image&amp;rdquo; or a VM, nor a local disk. Therefore, we select the appropriate option, &amp;ldquo;Logical Files&amp;rdquo;:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type.png"
+width="861"
+height="543"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type_hu6862495736605752197.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type_hu13735227138581635848.png 1024w"
+loading="lazy"
+alt="Autopsy"
+class="gallery-image"
+data-flex-grow="158"
+data-flex-basis="380px"
+>&lt;/p>
+&lt;!-- &lt;div class="image2-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="pictures/autopsy-type.png">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type.png" srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type_hu10259340970336895008.png 360w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type_hu10231070479329917598.png 720w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type_hu8278487795151172247.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="620" />
+&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;/div> -->
+&lt;p>We wait for Autopsy and its modules to complete the ingestion process. This may take some time.&lt;/p>
+&lt;p>All set, we can begin the investigation:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion.png"
+width="950"
+height="551"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion_hu8847970414139715284.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion_hu5619979587414845525.png 1024w"
+loading="lazy"
+alt="Autopsy"
+class="gallery-image"
+data-flex-grow="172"
+data-flex-basis="413px"
+>&lt;/p>
+&lt;!-- &lt;div class="image2-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="pictures/autopsy-ingestion.png">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion.png" srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion_hu5021449277738356024.png 360w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion_hu5953934403159561371.png 720w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion_hu1274128389175726007.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="620" />
+&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;/div> -->
+&lt;h2 id="questions">Questions
+&lt;/h2>&lt;h3 id="question-1">Question 1
+&lt;/h3>&lt;h4 id="what-is-the-email-address-used-by-the-agent-in-various-applicationsservices">What is the email address used by the agent in various applications/services?
+&lt;/h4>&lt;p>To answer this, I will use the report generated by Autopsy via ALEAPP (Android Logs Events And Protobuf Parser), an open-source project aimed at parsing all known Android artifacts for forensic analysis.&lt;/p>
+&lt;p>To find it quickly and easily, we can search in:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>/data/data/com.android.vending/databases/library.db&lt;/code> to find the Google account used to download apps.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/library-db.png"
+width="1106"
+height="416"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/library-db_hu14356497083862899817.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/library-db_hu15170373232235569335.png 1024w"
+loading="lazy"
+alt="library.db"
+class="gallery-image"
+data-flex-grow="265"
+data-flex-basis="638px"
+>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>/data/data/com.android.providers.contacts/databases/contacts2.db&lt;/code> to find the Google account used to sync contacts.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts2-db.png"
+width="391"
+height="238"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts2-db_hu11527735429286072776.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts2-db_hu17764455955817381113.png 1024w"
+loading="lazy"
+alt="contacts2.db"
+class="gallery-image"
+data-flex-grow="164"
+data-flex-basis="394px"
+>&lt;/p>
+&lt;p>Additionally (not applicable in this challenge):&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>/data/com.android.vending/shared_prefs/lastaccount.xml&lt;/code> (last account used on Google PlayStore for Android 9 and later).&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.gms/shared_prefs/BackupAccount.xml&lt;/code> (email for backup account).&lt;/li>
+&lt;li>&lt;code>/data/com.android.email/databases/EmailProvider.db&lt;/code> (email accounts, 3rd-party app data, and messages associated with email notifications).&lt;/li>
+&lt;/ul>
+&lt;p>Finally, we end up with the HTML report:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp.png"
+width="1305"
+height="1293"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp_hu7130096182844556435.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp_hu12263893790261698615.png 1024w"
+loading="lazy"
+alt="ALEAPP"
+class="gallery-image"
+data-flex-grow="100"
+data-flex-basis="242px"
+>&lt;/p>
+&lt;!--
+&lt;div class="image2-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="pictures/aleapp.png">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp.png" srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp_hu14425811290376317999.png 360w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp_hu15982933620649972970.png 720w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp_hu3249029777657563161.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="720" />
+&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;/div> -->
+&lt;p>The email address can be found in various places.&lt;/p>
+&lt;p>For example, in the &amp;ldquo;Chrome&amp;rdquo; app under &amp;ldquo;Autofill&amp;rdquo; (a feature that automatically fills in forms with saved information):&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-autofill.png"
+width="1055"
+height="246"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-autofill_hu11332893087194299595.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-autofill_hu11223589903272610126.png 1024w"
+loading="lazy"
+alt="Chrome Autofill"
+class="gallery-image"
+data-flex-grow="428"
+data-flex-basis="1029px"
+>&lt;/p>
+&lt;p>In the Chrome &amp;ldquo;Login Data&amp;rdquo;:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login.png"
+width="1059"
+height="245"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login_hu17712187877154962798.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login_hu16446215484735778592.png 1024w"
+loading="lazy"
+alt="Chrome Login Data"
+class="gallery-image"
+data-flex-grow="432"
+data-flex-basis="1037px"
+>&lt;/p>
+&lt;p>And in the &amp;ldquo;Installed Apps (Library)&amp;rdquo; section, we find the Google account email used for app downloads:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-app-library.png"
+width="1063"
+height="316"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-app-library_hu13714229813044265702.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-app-library_hu16148577922576020004.png 1024w"
+loading="lazy"
+alt="Installed App (Library)"
+class="gallery-image"
+data-flex-grow="336"
+data-flex-basis="807px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>olegpachinksy@gmail.com&lt;/code>&lt;/p>
+&lt;h3 id="question-2">Question 2
+&lt;/h3>&lt;h4 id="what-is-the-contact-number-of-the-handler-assigned-to-the-arrested-agent">What is the contact number of the handler assigned to the arrested agent?
+&lt;/h4>&lt;p>In the &amp;ldquo;Contacts&amp;rdquo; section:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts.png"
+width="1053"
+height="152"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts_hu6587797369375758064.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts_hu2168626199806216219.png 1024w"
+loading="lazy"
+alt="Contacts"
+class="gallery-image"
+data-flex-grow="692"
+data-flex-basis="1662px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>+323145232315&lt;/code>&lt;/p>
+&lt;h3 id="question-3">Question 3
+&lt;/h3>&lt;h4 id="retrieve-the-credentials-and-link-to-the-official-portal-for-ravenski-agents-this-could-provide-an-intelligence-advantage-by-using-this-access-to-gather-actionable-information-about-upcoming-operations-planned-by-the-ravenski-government">Retrieve the credentials and link to the official portal for Ravenski agents. This could provide an intelligence advantage by using this access to gather actionable information about upcoming operations planned by the Ravenski government.
+&lt;/h4>&lt;p>We already found the answer to this question in Question 1 via Chrome &amp;ldquo;Login Data&amp;rdquo;:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login2.png"
+width="1055"
+height="240"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login2_hu15296478488851435636.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login2_hu11746730972429607906.png 1024w"
+loading="lazy"
+alt="Chrome Login Data"
+class="gallery-image"
+data-flex-grow="439"
+data-flex-basis="1055px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>agent.ravensk.idu.com:olegpachinksy007:HBLKNKD0MADsdfsa2334(*&amp;amp;DSMDB&lt;/code>&lt;/p>
+&lt;h3 id="question-4">Question 4
+&lt;/h3>&lt;h4 id="what-is-the-contact-code-used-to-confirm-the-identity-of-the-agent-and-handler-when-using-a-secure-chat-channel">What is the contact code used to confirm the identity of the agent and handler when using a secure chat channel?
+&lt;/h4>&lt;p>First, I’ll check for potential SMS messages here: &lt;code>/data/data/com.android.providers.telephony/databases/mmssms.db&lt;/code>.&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mmssms-db.png"
+width="959"
+height="1197"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mmssms-db_hu14772761795677474013.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mmssms-db_hu3808283121989879023.png 1024w"
+loading="lazy"
+alt="mmssms.db"
+class="gallery-image"
+data-flex-grow="80"
+data-flex-basis="192px"
+>&lt;/p>
+&lt;p>Nothing found.&lt;/p>
+&lt;p>We could also check here, though not applicable in this challenge:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>/data/com.google.android.gms/databases/icing_mmssms.db&lt;/code> (SMS/MMS).&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.gms/databases/ipa_mmssms.db&lt;/code> (SMS/MMS).&lt;/li>
+&lt;/ul>
+&lt;p>We need to find the messaging app used. In Autopsy’s &amp;ldquo;Installed Programs&amp;rdquo; section, we can view all installed apps:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-apps.png"
+width="880"
+height="748"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-apps_hu3650820897931429960.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-apps_hu171029572481239251.png 1024w"
+loading="lazy"
+alt="Installed Programs"
+class="gallery-image"
+data-flex-grow="117"
+data-flex-basis="282px"
+>&lt;/p>
+&lt;p>Different categories are shown:&lt;/p>
+&lt;ul>
+&lt;li>Installed Apps (GMS)&lt;/li>
+&lt;li>Installed Apps (Library)&lt;/li>
+&lt;li>Installed Apps (Vending)&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Installed Apps - GMS&lt;/strong>:
+This category refers to apps installed on the device, regardless of their installation method. Data can be found here: &lt;code>/data/com.google.android.gms/databases/&lt;/code>.&lt;/p>
+&lt;p>&lt;strong>Installed Apps - Library&lt;/strong>:
+This category refers to the app library for the Google user on the device. It may contain apps installed by the same Google account on another device or a previous installation. Data is stored here: &lt;code>/data/com.android.vending/databases/&lt;/code>.&lt;/p>
+&lt;p>&lt;strong>Installed Apps - Vending&lt;/strong>:
+This category specifically refers to apps installed via the Google Play Store. Data is retained even if the app is uninstalled and is located here: &lt;code>/data/com.android.vending/databases/&lt;/code>.&lt;/p>
+&lt;p>For clarity, let’s return to ALEAPP and focus on &amp;ldquo;Vending&amp;rdquo; type apps:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp-installed-app-vending.png"
+width="1055"
+height="626"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp-installed-app-vending_hu1141038315898512112.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp-installed-app-vending_hu13659998016684563510.png 1024w"
+loading="lazy"
+alt="ALEAPP - Installed Apps (Vending)"
+class="gallery-image"
+data-flex-grow="168"
+data-flex-basis="404px"
+>&lt;/p>
+&lt;p>The app that stands out is &lt;code>mega.privacy.android.app&lt;/code>. Indeed, it’s a messaging application:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega.png"
+width="781"
+height="734"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega_hu1189030808320422895.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega_hu16736818150663509043.png 1024w"
+loading="lazy"
+alt="MEGA"
+class="gallery-image"
+data-flex-grow="106"
+data-flex-basis="255px"
+>&lt;/p>
+&lt;p>ALEAPP has parsed messages exchanged via MEGA:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-messages.png"
+width="1045"
+height="942"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-messages_hu15900992541428924357.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-messages_hu16724471899791683972.png 1024w"
+loading="lazy"
+alt="Messages"
+class="gallery-image"
+data-flex-grow="110"
+data-flex-basis="266px"
+>&lt;/p>
+&lt;p>We can find this information here: &lt;code>/data/data/mega.privacy.android.app/karere-TU1IaTh4TUJpdTQKAfO_2P0qU8NMP7zDRlgv.db&lt;/code>.&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>REDAPPLEONACAR&lt;/code>&lt;/p>
+&lt;h3 id="question-5">Question 5
+&lt;/h3>&lt;h4 id="the-handler-shared-a-document-with-the-agent-using-a-cloud-storage-service-when-was-this-file-shared-with-the-agent">The handler shared a document with the agent using a cloud storage service. When was this file shared with the agent?
+&lt;/h4>&lt;p>Nothing found in messages. The document must have been sent another way. We know there’s no other messaging app, and it couldn’t have been sent via SMS/MMS.&lt;/p>
+&lt;p>In the installed apps, we saw &lt;code>com.google.android.apps.docs&lt;/code>. Let’s check here: &lt;code>\data\data\com.google.android.apps.docs&lt;/code>.&lt;/p>
+&lt;p>We find the database &lt;code>/data/data/com.google.android.apps.docs/app_cello/olegpachinksy@gmail.com/cello.db&lt;/code> containing this information:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/celo-db.png"
+width="1033"
+height="240"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/celo-db_hu13525151425253133660.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/celo-db_hu12549832181728511141.png 1024w"
+loading="lazy"
+alt="cello.db"
+class="gallery-image"
+data-flex-grow="430"
+data-flex-basis="1033px"
+>&lt;/p>
+&lt;p>The file can also be found here: &lt;code>EVIDENCE-CASE-RAVENSKIAN-AGENT-002/storage/emulated/0/Download/Debrief-Velorian OP Expansion East.pdf&lt;/code>:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op.png"
+width="1270"
+height="999"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op_hu7260486241203699891.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op_hu4913527138095684519.png 1024w"
+loading="lazy"
+alt="Debrief-Velorian OP Expansion East"
+class="gallery-image"
+data-flex-grow="127"
+data-flex-basis="305px"
+>&lt;/p>
+&lt;p>Note: Autopsy interprets timestamps using your computer’s time zone by default. Remember to adjust this setting in Autopsy (Tools &amp;gt; Options &amp;gt; View &amp;gt; Time Zone).&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>2024-04-01 09:36:41&lt;/code>&lt;/p>
+&lt;h3 id="question-6">Question 6
+&lt;/h3>&lt;h4 id="what-is-the-download-uri-for-the-previously-identified-shared-file">What is the download URI for the previously identified shared file?
+&lt;/h4>&lt;p>We know the file was downloaded, as we found it in &lt;code>/storage/emulated/0/Download/&lt;/code>.&lt;/p>
+&lt;p>Thus, we can search in &lt;code>/data/data/com.android.providers.downloads/databases/downloads.db&lt;/code>:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/downloads-db.png"
+width="1038"
+height="262"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/downloads-db_hu8655702280366484884.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/downloads-db_hu14956409061816301645.png 1024w"
+loading="lazy"
+alt="downloads.db"
+class="gallery-image"
+data-flex-grow="396"
+data-flex-basis="950px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>https://www.googleapis.com/drive/v2internal/files/1iQKKlBU2vuJD1Xet6IYPt7IODVtDHxv1?alt=media&amp;amp;source=downloadUrl&amp;amp;auditContext=fileAction&amp;amp;reason=909&amp;amp;syncType=1&amp;amp;featureLabel=android-sync-classic&amp;amp;openDrive=false&amp;amp;errorRecovery=false&amp;amp;originatorApp=102&lt;/code>&lt;/p>
+&lt;h3 id="question-7">Question 7
+&lt;/h3>&lt;h4 id="to-gather-further-intelligence-for-velorias-counter-espionage-efforts-what-was-the-primary-objective-of-this-cyber-operation-led-by-the-ravenski-government">To gather further intelligence for Veloria’s counter-espionage efforts, what was the primary objective of this cyber operation led by the Ravenski government?
+&lt;/h4>&lt;p>Returning to the document:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op-text.png"
+width="726"
+height="584"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op-text_hu15768646427766231920.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op-text_hu4640143542648210762.png 1024w"
+loading="lazy"
+alt="Debrief-Velorian OP Expansion East"
+class="gallery-image"
+data-flex-grow="124"
+data-flex-basis="298px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>Infiltrate the Velorian secured network to gather intelligence on upcoming cyber-attacks, their techniques, and target countries.&lt;/code>&lt;/p>
+&lt;h3 id="question-8">Question 8
+&lt;/h3>&lt;h4 id="identifying-the-handler-is-also-crucial-for-velorian-law-enforcement-to-understand-the-scope-of-this-operation-what-is-the-handlers-email-address">Identifying the handler is also crucial for Velorian law enforcement to understand the scope of this operation. What is the handler’s email address?
+&lt;/h4>&lt;p>We already saw this in the MEGA app messages:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-email.png"
+width="818"
+height="110"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-email_hu1491445961763267341.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-email_hu10939781081505149858.png 1024w"
+loading="lazy"
+alt="MEGA"
+class="gallery-image"
+data-flex-grow="743"
+data-flex-basis="1784px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>ivoryalex783@gmail.com&lt;/code>&lt;/p>
+&lt;h3 id="question-9">Question 9
+&lt;/h3>&lt;h4 id="what-is-the-name-of-the-place-where-the-agent-and-handler-met">What is the name of the place where the agent and handler met?
+&lt;/h4>&lt;p>Returning to the messages:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-message.png"
+width="1098"
+height="78"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-message_hu16067581850266218057.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-message_hu11319932675825205584.png 1024w"
+loading="lazy"
+alt="MEGA - Messages"
+class="gallery-image"
+data-flex-grow="1407"
+data-flex-basis="3378px"
+>&lt;/p>
+&lt;p>This question took the most time; I spent about an hour on it.&lt;/p>
+&lt;p>Initially, I searched the usual locations:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>/data/com.google.android.apps.maps/databases/gmm_storage.db&lt;/code>&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.apps.maps/databases/search_history.db&lt;/code>&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.apps.maps/databases/da_destination_history&lt;/code>&lt;/li>
+&lt;li>&lt;code>/data/com.sec.android.daemonapp/db/weatherClock&lt;/code>&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.apps.maps/app_tts-cache/&lt;/code>&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.apps.maps/cache/image_manager_disk_cache/&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>After finding nothing, I thought the answer might be in the metadata of images on the phone. Indeed, there were 48 images, several of which showed bars:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/images.png"
+width="997"
+height="621"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/images_hu5817545336451704280.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/images_hu620833154082632123.png 1024w"
+loading="lazy"
+alt="Images"
+class="gallery-image"
+data-flex-grow="160"
+data-flex-basis="385px"
+>&lt;/p>
+&lt;p>However, nothing conclusive.&lt;/p>
+&lt;p>I then questioned:&lt;/p>
+&lt;ul>
+&lt;li>Are there other navigation/location apps on the phone?&lt;/li>
+&lt;li>Is it certain I should look in the Google Maps app?&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>No, only Google Maps.&lt;/li>
+&lt;li>No, it’s possible the search was made in the browser instead.&lt;/li>
+&lt;/ol>
+&lt;p>After checking typical Google Maps artifacts, I decided to search in the browser but found nothing.&lt;/p>
+&lt;p>So I returned to digging through Google Maps artifacts:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/liste-artefacts-google-map.png"
+width="274"
+height="218"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/liste-artefacts-google-map_hu13754758231964912769.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/liste-artefacts-google-map_hu12112553986474291706.png 1024w"
+loading="lazy"
+alt="artefacts - Google Maps"
+class="gallery-image"
+data-flex-grow="125"
+data-flex-basis="301px"
+>&lt;/p>
+&lt;ul>
+&lt;li>app: nothing relevant&lt;/li>
+&lt;li>app_offline_downloads: nothing relevant&lt;/li>
+&lt;li>app_offline_hashes: nothing relevant&lt;/li>
+&lt;li>app_textures: nothing relevant&lt;/li>
+&lt;li>app_webview: nothing relevant&lt;/li>
+&lt;li>cache: nothing relevant&lt;/li>
+&lt;li>databases: too many files, will revisit&lt;/li>
+&lt;li>files: &amp;ldquo;new_recent_history_cache_search.cs&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/new_recent_history_cache_search.png"
+width="517"
+height="278"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/new_recent_history_cache_search_hu13191291403912983547.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/new_recent_history_cache_search_hu3148326987438565339.png 1024w"
+loading="lazy"
+alt="new_recent_history_cache_search.cs"
+class="gallery-image"
+data-flex-grow="185"
+data-flex-basis="446px"
+>&lt;/p>
+&lt;p>It turns out I could have simply searched for the keyword &amp;ldquo;Pub&amp;rdquo; 🤡&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>Levstik Pub&lt;/code>&lt;/p>
+&lt;h3 id="question-10">Question 10
+&lt;/h3>&lt;h4 id="according-to-the-chat-between-the-agent-and-handler-it-appears-that-the-handler-sent-the-agent-an-image-related-to-the-infrastructure-used-by-the-ravenski-government-for-this-cyber-espionage-operation-what-c2-framework-is-used-by-the-ravenski-government">According to the chat between the agent and handler, it appears that the handler sent the agent an image related to the infrastructure used by the Ravenski government for this cyber-espionage operation. What C2 framework is used by the Ravenski government?
+&lt;/h4>&lt;p>Having already reviewed all images for Question 9, I have the answer.&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/c2.png"
+width="648"
+height="412"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/c2_hu11013950204403249464.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/c2_hu16068086331019550701.png 1024w"
+loading="lazy"
+alt="C2"
+class="gallery-image"
+data-flex-grow="157"
+data-flex-basis="377px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>Empire&lt;/code>&lt;/p>
+&lt;h3 id="question-11">Question 11
+&lt;/h3>&lt;h4 id="collecting-information-on-infrastructure-such-as-ip-addresses-or-hostnames-is-crucial-for-velorian-authorities-as-they-prepare-a-counter-offensive-based-on-the-recovered-image-sent-by-the-handler-to-the-agent-what-is-the-ip-address-of-one-of-the-c2-servers-operated-by-ravenski-threat-actors">Collecting information on infrastructure, such as IP addresses or hostnames, is crucial for Velorian authorities as they prepare a counter-offensive. Based on the recovered image sent by the handler to the agent, what is the IP address of one of the C2 servers operated by Ravenski threat actors?
+&lt;/h4>&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>98.24.12.45&lt;/code>&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/success.png"
+width="707"
+height="483"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/success_hu1097418382369568901.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/success_hu5903210077294405049.png 1024w"
+loading="lazy"
+alt="Success"
+class="gallery-image"
+data-flex-grow="146"
+data-flex-basis="351px"
+>&lt;/p></description></item><item><title>OpShieldWall-1</title><link>https://jaybird1291.github.io/blog/en/p/opshieldwall-1/</link><pubDate>Tue, 07 May 2024 08:00:05 +0000</pubDate><guid>https://jaybird1291.github.io/blog/en/p/opshieldwall-1/</guid><description>&lt;img src="https://jaybird1291.github.io/blog/en/p/opshieldwall-1/htb-opshieldwall1.png" alt="Featured image of post OpShieldWall-1" />&lt;h2 id="scenario">Scenario
+&lt;/h2>&lt;blockquote>
+&lt;p>Thank you for responding to our call. The Ministry of Defense of Velorian is in desperate need of assistance&amp;hellip;&lt;/p>
+&lt;p>We need to keep this discreet, but we believe that the public WiFi at the Ministry of Defense offices in Velorian has been compromised. The impact seems minimal, but network diagrams show that no real segmentation of the network has been implemented and that device-to-device traffic is allowed. Government ministers use this network with BYoD equipment and Velorian MoDNet hosts. Please analyze the provided pcap file and confirm how and when this occurred. Remember that this investigation is classified as TLP Amber.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="files">Files
+&lt;/h2>&lt;ul>
+&lt;li>&lt;code>opshieldwall1.zip&lt;/code> containing the network capture &amp;ldquo;VELORIA-NETWORK.pcap&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;h2 id="setup">Setup
+&lt;/h2>&lt;p>Given the simplicity of this challenge, we can limit ourselves to &lt;code>tshark&lt;/code> / &lt;code>wireshark&lt;/code>.&lt;/p>
+&lt;h2 id="questions">Questions
+&lt;/h2>&lt;h3 id="question-1">Question 1
+&lt;/h3>&lt;h4 id="please-confirm-the-ssid-of-our-wifi-network">Please confirm the SSID of our WiFi network.
+&lt;/h4>&lt;p>First, let’s get familiar with the capture. We’ll use the following command to gather some statistics:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ tshark -r traffic.pcapng -qz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;code>-r&lt;/code> allows reading a file&lt;/li>
+&lt;li>&lt;code>-q&lt;/code> makes the output quieter (useful for stats as it displays global statistics, not per packet)&lt;/li>
+&lt;li>&lt;code>-z&lt;/code> enables statistics display&lt;/li>
+&lt;/ul>
+&lt;p>There are many possible values (&lt;code>tshark -z help&lt;/code> to display them), but here we primarily want to know:&lt;/p>
+&lt;ul>
+&lt;li>the packet count&lt;/li>
+&lt;li>the capture duration&lt;/li>
+&lt;li>the IPv4 addresses with the most packets&lt;/li>
+&lt;li>the IPv4 endpoints exchanging the most&lt;/li>
+&lt;li>the most used protocols&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Packet count and duration&lt;/strong>: 106; 31.6 sec&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ tshark -r VELORIA-NETWORK.pcap -qz io,stat,0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> IO Statistics &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> Duration: 31.6 secs &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> Interval: 31.6 secs &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> Col 1: Frames and bytes &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>---------------------------------&lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> Interval &lt;span class="p">|&lt;/span> Frames &lt;span class="p">|&lt;/span> Bytes &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>-------------------------------&lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> 0.0 &amp;lt;&amp;gt; 31.6 &lt;span class="p">|&lt;/span> &lt;span class="m">106&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="m">20759&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===================================&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>IPv4 endpoints:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>with the most packets:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ tshark -r VELORIA-NETWORK.pcap -qz endpoints,ip
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">================================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">IPv4 Endpoints
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Filter:&amp;lt;No Filter&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">|&lt;/span> Packets &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Bytes &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Tx Packets &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Tx Bytes &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Rx Packets &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Rx Bytes &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">0.0.0.0 &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span> &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">255.255.255.255 &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">10.0.3.1 &lt;span class="m">3&lt;/span> &lt;span class="m">1048&lt;/span> &lt;span class="m">3&lt;/span> &lt;span class="m">1048&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">10.0.3.52 &lt;span class="m">3&lt;/span> &lt;span class="m">1048&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">3&lt;/span> &lt;span class="nv">1048&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">================================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>exchanging the most:&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tshark -r VELORIA-NETWORK.pcap -qz conv,ip
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">================================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">IPv4 Conversations
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Filter:&amp;lt;No Filter&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">|&lt;/span> &amp;lt;- &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> -&amp;gt; &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Total &lt;span class="p">|&lt;/span> Relative &lt;span class="p">|&lt;/span> Duration &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">|&lt;/span> Frames Bytes &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Frames Bytes &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Frames Bytes &lt;span class="p">|&lt;/span> Start &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">0.0.0.0 &amp;lt;-&amp;gt; 255.255.255.255 &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> bytes &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span> bytes &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span> bytes 23.256576000 8.3680
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">10.0.3.1 &amp;lt;-&amp;gt; 10.0.3.52 &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> bytes &lt;span class="m">3&lt;/span> &lt;span class="m">1048&lt;/span> bytes &lt;span class="m">3&lt;/span> &lt;span class="m">1048&lt;/span> bytes 23.256959000 8.3693
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">================================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Most used protocols:&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">tshark -r VELORIA-NETWORK.pcap -qz io,phs
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Protocol Hierarchy Statistics
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Filter:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sll frames:106 bytes:20759
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> radiotap frames:92 bytes:17572
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> wlan_radio frames:92 bytes:17572
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> wlan frames:92 bytes:17572
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> wlan.mgt frames:92 bytes:17572
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> eapol frames:6 bytes:999
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> eap frames:6 bytes:999
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ip frames:6 bytes:2092
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> udp frames:6 bytes:2092
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> dhcp frames:6 bytes:2092
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> arp frames:2 bytes:96
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>To answer, we can simply use the command:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ tshark -r VELORIA-NETWORK.pcap -T fields -e wlan.ssid &lt;span class="p">|&lt;/span> head -n &lt;span class="m">1&lt;/span> &lt;span class="p">|&lt;/span> xxd -r -p
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">VELORIA-MoD-AP012
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Explication&lt;/strong> :
+(&lt;a class="link" href="https://www.wireshark.org/docs/dfref/w/wlan.html" target="_blank" rel="noopener"
+>https://www.wireshark.org/docs/dfref/w/wlan.html&lt;/a>)&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>-t&lt;/code> displays only user-specified fields (thus requiring the use of the &lt;code>-e&lt;/code> option to specify fields)&lt;/li>
+&lt;li>&lt;code>-e wlan.ssid&lt;/code> specifies that the &lt;code>wlan.ssid&lt;/code> field (SSID of wireless networks) should be extracted and displayed&lt;/li>
+&lt;li>&lt;code>-xxd -r -p&lt;/code> converts the output from hexadecimal to readable text&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Answer&lt;/strong> :
+&lt;code>VELORIA-MoD-AP012&lt;/code>&lt;/p>
+&lt;h3 id="question-2">Question 2
+&lt;/h3>&lt;h4 id="please-confirm-the-mac-address-of-the-access-point-ap">Please confirm the MAC address of the access point (AP).
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tshark -r VELORIA-NETWORK.pcap -T fields -e wlan.sa &lt;span class="p">|&lt;/span> head -n &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">02:00:00:00:01:00
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Answer&lt;/strong> :
+&lt;code>02:00:00:00:01:00&lt;/code>&lt;/p>
+&lt;h3 id="question-3">Question 3
+&lt;/h3>&lt;h4 id="please-confirm-the-aps-authentication-statemechanism-and-attack-vector">Please confirm the AP’s authentication state/mechanism and attack vector.
+&lt;/h4>&lt;p>Switching to Wireshark.&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-1/pictures/image.png"
+width="944"
+height="116"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-1/pictures/image_hu616452334496551155.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-1/pictures/image_hu8139663477600881612.png 1024w"
+loading="lazy"
+alt="EAP Sequence (Extensible Authentication Protocol)"
+class="gallery-image"
+data-flex-grow="813"
+data-flex-basis="1953px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong> :
+&lt;code>WPS&lt;/code>&lt;/p>
+&lt;h3 id="question-4">Question 4
+&lt;/h3>&lt;h4 id="what-is-the-packet-number-where-the-attack-began">What is the packet number where the attack began?
+&lt;/h4>&lt;p>We can easily deduce that it’s at the first connection attempt (the only one in the capture).&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong> :
+&lt;code>93&lt;/code>&lt;/p>
+&lt;h3 id="question-5">Question 5
+&lt;/h3>&lt;h4 id="what-is-the-packet-number-where-the-attack-ended">What is the packet number where the attack ended?
+&lt;/h4>&lt;p>It’s clear that it ends when the authentication fails.&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong> :
+&lt;code>8&lt;/code>&lt;/p></description></item><item><title>Archives</title><link>https://jaybird1291.github.io/blog/en/archives/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jaybird1291.github.io/blog/en/archives/</guid><description/></item><item><title>Completions</title><link>https://jaybird1291.github.io/blog/en/completions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jaybird1291.github.io/blog/en/completions/</guid><description>&lt;p>List of all the challenges, labs, boxes, etc., that I have completed, as well as conferences and trainings I have attended.&lt;/p>
+&lt;h2 id="hackthebox">HackTheBox
+&lt;/h2>&lt;ul>
+&lt;li>Iron = Insane&lt;/li>
+&lt;li>Red = Hard&lt;/li>
+&lt;li>Orange = Medium&lt;/li>
+&lt;li>Green = Easy&lt;/li>
+&lt;/ul>
+&lt;p>Some images do not link to the HTB result pages as they are boxes/Sherlocks only available on the HackTheBox Enterprise platform (which does not allow for shareable links).&lt;/p>
+&lt;h3 id="sherlock">Sherlock
+&lt;/h3>&lt;h4 id="dfir--soc">DFIR / SOC
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall7.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall7_hu579724800650327479.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall7_hu2454315065833572799.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall7_hu8889304676559092459.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-7
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/612">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/htb-aptnightmare.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/htb-aptnightmare_hu14506320040222139442.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/htb-aptnightmare_hu8130504630447302240.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/htb-aptnightmare_hu17877421353539112076.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+APTNightmare
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall4.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall4_hu5290050942369492626.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall4_hu9133739515828578575.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall4_hu7696170895908073641.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-4
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall2.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall2_hu17243326217080313549.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall2_hu11472612143667253910.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall2_hu7012134481310493621.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-2
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall1.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall1_hu4429877169849273751.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall1_hu1815357149590305642.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/htb-opshieldwall1_hu7199748969793661734.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-1
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/613">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/htb-JingleBell.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/htb-JingleBell_hu15520807250684938836.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/htb-JingleBell_hu1113491640751933650.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/htb-JingleBell_hu2223187648654883136.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Jingle Bell
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/586">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/htb-recollection.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/htb-recollection_hu9365108520062341401.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/htb-recollection_hu3569605058189495193.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/htb-recollection_hu4748220565018237411.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Recollection
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/585">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/htb-noted.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/htb-noted_hu16006733092085636200.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/htb-noted_hu4244040473907432197.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/htb-noted_hu3589332335171942085.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Noted
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/558">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/htb-tracer.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/htb-tracer_hu13172058219398332484.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/htb-tracer_hu476542104265597376.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/htb-tracer_hu11987707345085084332.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Tracer
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/557">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/htb-logjammer.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/htb-logjammer_hu7911088276543909127.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/htb-logjammer_hu690602427098028775.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/htb-logjammer_hu14522627674507713650.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Log Jammer
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/569">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/htb-rogueone.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/htb-rogueone_hu7664145778323154221.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/htb-rogueone_hu18301601039103678755.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/htb-rogueone_hu12251393642675604528.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Rogue One
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h4 id="malware-analysis">Malware Analysis
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall6.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall6_hu5621374275916172783.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall6_hu3841799911030862651.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall6_hu9587534117345449726.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-6
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h4 id="cloud">Cloud
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/573">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/htb-nubilum-2.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/htb-nubilum-2_hu14358102005267188694.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/htb-nubilum-2_hu17497253826863540861.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/htb-nubilum-2_hu12719084516349249626.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Nubilum-2
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h3 id="box">Box
+&lt;/h3>&lt;h4 id="linux">Linux
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall5.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall5_hu4024025657688833182.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall5_hu8779950622552055684.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall5_hu16521836625394008913.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-5
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall3.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall3_hu15423821179330681262.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall3_hu16180536951750078752.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/OpShieldWall3_hu13015791639527373136.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-3
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/605">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/Blurry.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/Blurry_hu15351397706230984902.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/Blurry_hu146879816270839374.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/Blurry_hu14299096155221514037.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Blurry
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/598">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/Runner.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/Runner_hu6455371249579715448.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/Runner_hu8065185850918337061.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/Runner_hu15946208956993193267.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Runner
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/596">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/iclean.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/iclean_hu11159530487368458987.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/iclean_hu2030006978562193355.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/iclean_hu13183835513825375033.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+IClean
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/590">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/Perfection.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/Perfection_hu8207586915382724039.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/Perfection_hu5684711410623451424.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/Perfection_hu11410880852843531185.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Perfection
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/603">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/BoardLight.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/BoardLight_hu9022996687300344379.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/BoardLight_hu7803853930145595769.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/BoardLight_hu15945925623941766793.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+BoardLight
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/594">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/Headless.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/Headless_hu10041931000319220926.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/Headless_hu17819858676304818438.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/Headless_hu8682198354528407257.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Headless
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/563">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/wifinetic.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/wifinetic_hu15526568003115025989.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/wifinetic_hu13927562312298190171.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/wifinetic_hu10476196525861621815.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Wifinetic
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/504">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/metatwo.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/metatwo_hu9714854198424503102.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/metatwo_hu4325594907114618375.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/metatwo_hu9488859881305071060.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+MetaTwo
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/1">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/lame.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/lame_hu7801889187164139196.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/lame_hu6722013954998448917.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/lame_hu6250407694448391483.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Lame
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/121">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/nibbles.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/nibbles_hu13711978232794863721.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/nibbles_hu2613596401305171967.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/nibbles_hu15107159489188437247.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Nibbles
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/513">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/precious.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/precious_hu9815729354025273953.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/precious_hu9661456167198837651.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/precious_hu12325692223714062164.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Precious
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h4 id="windows">Windows
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/144">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/jerry.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/jerry_hu10660849773579491429.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/jerry_hu5807799828738485100.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/jerry_hu17319030519082570605.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Jerry
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/177">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/netmon.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/netmon_hu8258641792238506468.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/netmon_hu5226152736025356256.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/netmon_hu5446841209155805534.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Netmon
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/51">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/blue.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/blue_hu2280389026581750800.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/blue_hu11716184482303536226.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/blue_hu9760226231665272777.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Blue
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="hackthebox-academy">HackTheBox Academy
+&lt;/h2>&lt;h3 id="modules">Modules
+&lt;/h3>&lt;p>&lt;a class="link" href="htb-academy-transcript.pdf" >Transcript.pdf&lt;/a>&lt;/p>
+&lt;br>
+&lt;h2 id="rootme">RootMe
+&lt;/h2>&lt;p>2045 points (105 challenges)&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/rootme-validations.png"
+width="1951"
+height="822"
+srcset="https://jaybird1291.github.io/blog/blog/en/completions/rootme-validations_hu2624416421133798099.png 480w, https://jaybird1291.github.io/blog/blog/en/completions/rootme-validations_hu3755144633520605443.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="237"
+data-flex-basis="569px"
+>
+&lt;br>&lt;/p>
+&lt;h3 id="networks-100-as-of-10052024">Networks (100% as of 10/05/2024)
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/rootme-reseau.png"
+width="1074"
+height="696"
+srcset="https://jaybird1291.github.io/blog/blog/en/completions/rootme-reseau_hu15883397316856032297.png 480w, https://jaybird1291.github.io/blog/blog/en/completions/rootme-reseau_hu12060853295638203063.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="154"
+data-flex-basis="370px"
+>
+&lt;br>&lt;/p>
+&lt;h3 id="forensics-62-as-of-23072024">Forensics (62% as of 23/07/2024)
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/rootme-forensic.png"
+width="983"
+height="944"
+srcset="https://jaybird1291.github.io/blog/blog/en/completions/rootme-forensic_hu13832100707832213538.png 480w, https://jaybird1291.github.io/blog/blog/en/completions/rootme-forensic_hu14990982727009482016.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="104"
+data-flex-basis="249px"
+>
+&lt;br>&lt;/p>
+&lt;h2 id="cyberdefenders">Cyberdefenders
+&lt;/h2>&lt;h3 id="network-forensics">Network Forensics
+&lt;/h3>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/46/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/Acoustic.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/Acoustic_hu15354697604698474116.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/Acoustic_hu8880302018282201001.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/Acoustic_hu415220149048500509.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Medium
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/68/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/PacketMaze.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/PacketMaze_hu12914593227251596679.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/PacketMaze_hu7542653086843307191.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/PacketMaze_hu6588275853097952125.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Medium
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/91/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/HawkEye.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/HawkEye_hu6283505015548296721.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/HawkEye_hu14228456030665469623.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/HawkEye_hu15746856790174388946.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Medium
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/153/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/OpenWire.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/OpenWire_hu8282177788446358399.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/OpenWire_hu13429565196393086489.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/OpenWire_hu16033793978522266370.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Medium
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/170/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/webinvestigation.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/webinvestigation_hu15704396993755092482.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/webinvestigation_hu308155583775391976.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/webinvestigation_hu11932654100887685377.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/143/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/PsExec_Hunt.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/PsExec_Hunt_hu10619219234567398709.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/PsExec_Hunt_hu522352600796677305.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/PsExec_Hunt_hu10786640909411843998.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/146/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/PoisonedCredentials.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/PoisonedCredentials_hu11325156128933334424.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/PoisonedCredentials_hu6686387789662348341.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/PoisonedCredentials_hu3270805595637656253.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/149/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/WebStrike.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/WebStrike_hu6482539043750461512.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/WebStrike_hu6868677040100264364.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/WebStrike_hu18034741982584633714.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/135/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/Tomcat_Takeover.webp" srcset="https://jaybird1291.github.io/blog/blog/en/completions/Tomcat_Takeover_hu17891501569975409699.webp 360w, https://jaybird1291.github.io/blog/blog/en/completions/Tomcat_Takeover_hu8709004526798782167.webp 720w, https://jaybird1291.github.io/blog/blog/en/completions/Tomcat_Takeover_hu14999244439214972445.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="tryhackme">TryHackMe
+&lt;/h2>&lt;p>92 rooms completed&lt;/p>
+&lt;h3 id="path">Path
+&lt;/h3>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/thm-ps.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/thm-ps_hu12212920565235151075.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/thm-ps_hu14624947788008992376.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/thm-ps_hu5409664631841758671.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="250" />
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/thm-itcs.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/thm-itcs_hu7458374997566050520.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/thm-itcs_hu3579346142778577776.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/thm-itcs_hu2893484210292552865.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="250" />
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/thm-cb.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/thm-cb_hu17087676180828035337.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/thm-cb_hu16489013832456173895.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/thm-cb_hu17204799293709712481.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="250" />
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="cours">Cours
+&lt;/h2>&lt;ul>
+&lt;li>&lt;strong>Kaspersky&lt;/strong>: Advanced Malware Analysis Techniques&lt;/li>
+&lt;li>&lt;strong>Kaspersky&lt;/strong>: Hunting APTs like a Ninja with YARA&lt;/li>
+&lt;li>&lt;strong>OALABS&lt;/strong>: Reverse Engineering 101 (RE101)&lt;/li>
+&lt;li>&lt;strong>Roman Stuehler&lt;/strong>: Android App Hacking - Black Belt Edition&lt;/li>
+&lt;li>&lt;strong>Pentherz&lt;/strong>: Intro to SDR Hacking&lt;/li>
+&lt;li>&lt;strong>Christopher Negus&lt;/strong>: Linux Bible&lt;/li>
+&lt;li>&lt;strong>OSINT (Open Source Intelligence Techniques)&lt;/strong>: IntelTechniques&lt;/li>
+&lt;li>&lt;strong>Opdisk&lt;/strong>: The Cyber Plumber&amp;rsquo;s Handbook&lt;/li>
+&lt;/ul>
+&lt;h2 id="conf--meetups">Conf &amp;amp; meetups
+&lt;/h2>&lt;h3 id="2023">2023
+&lt;/h3>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/hexacon.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/hexacon_hu2260745631328100675.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/hexacon_hu4738974758408711249.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/hexacon_hu3338963062700541662.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="300" />
+&lt;figcaption>
+Hexacon
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/defconparis.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/defconparis_hu10609380435012629576.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/defconparis_hu14070235002871940370.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/defconparis_hu10359481016057934603.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="165" />
+&lt;figcaption>
+DEFCON Paris
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/lehack.png" srcset="https://jaybird1291.github.io/blog/blog/en/completions/lehack_hu10458075379095863693.png 360w, https://jaybird1291.github.io/blog/blog/en/completions/lehack_hu6696575244145232669.png 720w, https://jaybird1291.github.io/blog/blog/en/completions/lehack_hu9532804271304724566.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="320" />
+&lt;figcaption>
+LeHack
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/completions/meetuphtb.jpg" srcset="https://jaybird1291.github.io/blog/blog/en/completions/meetuphtb_hu2148130649180681101.jpg 360w, https://jaybird1291.github.io/blog/blog/en/completions/meetuphtb_hu16050568875697026432.jpg 720w, https://jaybird1291.github.io/blog/blog/en/completions/meetuphtb_hu10562525598476022067.jpg 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="320" />
+&lt;figcaption>
+HTB Meetups France
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div></description></item><item><title>Search</title><link>https://jaybird1291.github.io/blog/en/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jaybird1291.github.io/blog/en/search/</guid><description/></item></channel></rss>

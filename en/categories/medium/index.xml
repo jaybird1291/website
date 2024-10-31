@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Medium on Jaybird1291</title><link>https://jaybird1291.github.io/blog/en/categories/medium/</link><description>Recent content in Medium on Jaybird1291</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 19 May 2024 08:00:05 +0000</lastBuildDate><atom:link href="https://jaybird1291.github.io/blog/en/categories/medium/index.xml" rel="self" type="application/rss+xml"/><item><title>OpShieldWall-2</title><link>https://jaybird1291.github.io/blog/en/p/opshieldwall-2/</link><pubDate>Sun, 19 May 2024 08:00:05 +0000</pubDate><guid>https://jaybird1291.github.io/blog/en/p/opshieldwall-2/</guid><description>&lt;img src="https://jaybird1291.github.io/blog/en/p/opshieldwall-2/OpShieldWall-2.jpg" alt="Featured image of post OpShieldWall-2" />&lt;h2 id="scenario">Scenario
+&lt;/h2>&lt;blockquote>
+&lt;p>We have successfully confirmed the location of the malicious actor who compromised our government’s WiFi network.&lt;/p>
+&lt;p>Recently, a dawn raid was conducted as part of OP ERADICATE at an address in the Velorian capital, resulting in the seizure of a substantial amount of evidence. Notably, an Android device belonging to the agent was confiscated, and it is believed to have been at the scene of the attack.&lt;/p>
+&lt;p>We require your expertise to analyze this device and answer the detailed questions below. Time is limited; a Velorian COBR meeting has been organized to discuss your findings&amp;hellip;&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="files">Files
+&lt;/h2>&lt;ul>
+&lt;li>&lt;code>opshieldwall2.zip&lt;/code> containing &amp;ldquo;EVIDENCE-CASE-RAVENSKIAN-AGENT-002,&amp;rdquo; which includes the &amp;ldquo;data&amp;rdquo; and &amp;ldquo;storage&amp;rdquo; folders of an Android device.&lt;/li>
+&lt;/ul>
+&lt;p>This provides a significant amount of room for analysis, as the /data directory contains a wealth of information, such as:&lt;/p>
+&lt;div class="image2-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="pictures/cheatsheet-sans-for585.png">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/cheatsheet-sans-for585.png" srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/cheatsheet-sans-for585_hu16155672487987992094.png 360w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/cheatsheet-sans-for585_hu11289631915745235764.png 720w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/cheatsheet-sans-for585_hu12009676279544424470.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="320" />
+&lt;/a>
+&lt;figcaption>
+Cheatsheet SANS FOR585
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="foreword">Foreword
+&lt;/h2>&lt;p>Before we begin, here is some important information about Android:&lt;/p>
+&lt;p>User data on Android can be stored both internally and externally. Internal data is saved in NAND flash memory, a non-volatile memory that retains data even when the power is off. NAND stores the bootloader, the operating system, and user data. Application data is stored on NAND flash memory or on the SD card.&lt;/p>
+&lt;p>Android is based on variants of the Long-Term Support (LTS) branches of the Linux Kernel. With Android v8 (Oreo), Google required the use of Linux Kernel version 4.4 or higher. For example, Android v9 (Pie) runs on versions 4.4, 4.9, or 4.14, depending on the device. More information is available on the Android OS wiki: &lt;a class="link" href="https://source.android.com/docs/core/architecture/kernel/android-common?hl=en" target="_blank" rel="noopener"
+>https://source.android.com/docs/core/architecture/kernel/android-common?hl=en&lt;/a>.&lt;/p>
+&lt;p>&lt;code>android-mainline&lt;/code> is the primary development branch for Android features. The mainline Linux branch is merged with &lt;code>android-mainline&lt;/code> every time Linus Torvalds releases a version or release candidate:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-branches.png"
+width="932"
+height="720"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-branches_hu11681531264120324004.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-branches_hu8683411598684431168.png 1024w"
+loading="lazy"
+alt="Android Common Kemel Branching Model"
+class="gallery-image"
+data-flex-grow="129"
+data-flex-basis="310px"
+>&lt;/p>
+&lt;p>Commonly found file systems include:&lt;/p>
+&lt;ul>
+&lt;li>EXT4&lt;/li>
+&lt;li>F2FS&lt;/li>
+&lt;li>YAFFS2&lt;/li>
+&lt;li>exFAT&lt;/li>
+&lt;/ul>
+&lt;p>Most artifacts are stored as SQLite databases and XML files. Android isolates applications at the kernel level, assigning each one a unique identifier (UID) to track running applications.&lt;/p>
+&lt;h3 id="android-architecture">Android Architecture
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-architecture.png"
+width="549"
+height="815"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-architecture_hu8710287640414005145.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-architecture_hu7157129161549664279.png 1024w"
+loading="lazy"
+alt="Architecture"
+class="gallery-image"
+data-flex-grow="67"
+data-flex-basis="161px"
+>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>The Linux kernel forms the foundation of Android, supporting essential features like threads and low-level memory management used by Android Runtime (ART).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The Hardware Abstraction Layer (HAL) provides standardized interfaces that expose hardware functionality to higher-level Java APIs. It consists of library modules specific to each hardware component (such as the camera or Bluetooth). When an API accesses hardware, Android loads the corresponding library module.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The Android Runtime (ART) environment runs each application in its own process and instance. ART manages multiple virtual machines on low-memory devices, using DEX bytecode specially designed and optimized for Android. Compilation tools like d8 transform Java code into DEX bytecode for execution on Android.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Many essential Android system components and services, such as ART and HAL, are created from native code requiring native libraries written in C and C++.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Android&amp;rsquo;s features are accessible via Java APIs, facilitating the reuse of key modular system components and services like notifications, resource management, and localization.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>System applications are the core set of apps that come with Android.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="android-virtual-machine">Android Virtual Machine
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-vm.png"
+width="235"
+height="258"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-vm_hu9996704157503076210.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/android-vm_hu12750818963076190994.png 1024w"
+loading="lazy"
+alt="Android Virtual Machine"
+class="gallery-image"
+data-flex-grow="91"
+data-flex-basis="218px"
+>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Virtual Machines (VMs) act as abstraction layers between an application and the underlying Android device.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Each application runs in its own instance within a VM, isolating it from other applications.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Android applications are written in Java but are compiled into Java bytecode.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>This bytecode is then transformed into Dalvik bytecode (.dex files) or ART bytecode.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Dalvik and ART run the bytecode (.dex) in a virtual machine, allowing applications to function independently of the underlying hardware.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Before KitKat (v.4.4), Android used Dalvik VMs.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Starting with Lollipop (v5.0), Android began using Android Runtime (ART) and phased out Dalvik VM.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Both Dalvik and ART use DEX bytecode, but ART includes new optimization features.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="directory-structure">Directory Structure
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/directory-structure.png"
+width="691"
+height="682"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/directory-structure_hu1759560322735221499.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/directory-structure_hu3151186207932460450.png 1024w"
+loading="lazy"
+alt="Directory structure"
+class="gallery-image"
+data-flex-grow="101"
+data-flex-basis="243px"
+>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>/cache&lt;/strong>: Can contain Gmail attachments, downloads, browsing data, and OTA updates.&lt;/li>
+&lt;li>&lt;strong>/efs&lt;/strong>: Contains files necessary for device operation in case of failure.&lt;/li>
+&lt;li>&lt;strong>/data&lt;/strong>:
+&lt;ul>
+&lt;li>&lt;strong>/data/data&lt;/strong>: Contains application folders (&lt;code>/data/data/com.example.app&lt;/code>), app configuration files, SQLite databases, logs, cache, etc.&lt;/li>
+&lt;li>&lt;strong>/app&lt;/strong>: Stores .apk files from the Android market. *Malware may be found here.&lt;/li>
+&lt;li>&lt;strong>/backup&lt;/strong>: Stores backup APIs for developers; user backup data is not stored here.&lt;/li>
+&lt;li>&lt;strong>/media&lt;/strong>: Internal storage equivalent to an SD card. *Malware may be found here.&lt;/li>
+&lt;li>&lt;strong>/misc&lt;/strong>: Stores files related to Bluetooth, DHCP, VPN, Wi-Fi, etc.&lt;/li>
+&lt;li>&lt;strong>/system&lt;/strong>: Contains key files such as &lt;code>gesture.key&lt;/code> and &lt;code>passwords.key&lt;/code>; the &lt;code>accounts.db&lt;/code> file, which stores usernames and passwords for file authentication, etc.&lt;/li>
+&lt;li>&lt;strong>/property&lt;/strong>: Stores system properties, including timezone, language settings, etc.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>/mnt&lt;/strong>:
+&lt;ul>
+&lt;li>&lt;strong>/asec&lt;/strong>: Stores unencrypted app data.&lt;/li>
+&lt;li>&lt;strong>/DCIM&lt;/strong>: Stores album thumbnails.&lt;/li>
+&lt;li>&lt;strong>/Pictures&lt;/strong>: Stores camera images.&lt;/li>
+&lt;li>&lt;strong>/downloads&lt;/strong>: Locally downloaded files.&lt;/li>
+&lt;li>&lt;strong>/secure/asec&lt;/strong>: Stores encrypted app data.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>/system&lt;/strong>:
+&lt;ul>
+&lt;li>&lt;strong>/app&lt;/strong>: Contains .apk files. *Malware may be found here.&lt;/li>
+&lt;li>&lt;strong>/priv-app&lt;/strong>: Contains .apk files with system-level permissions. *Malware may be found here.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>For more information on:&lt;/p>
+&lt;ul>
+&lt;li>App permissions: &lt;a class="link" href="https://developer.android.com/guide/topics/permissions/overview?hl=en" target="_blank" rel="noopener"
+>https://developer.android.com/guide/topics/permissions/overview?hl=en&lt;/a>, &lt;a class="link" href="https://blog.mindorks.com/what-are-the-different-protection-levels-in-android-permission/" target="_blank" rel="noopener"
+>https://blog.mindorks.com/what-are-the-different-protection-levels-in-android-permission/&lt;/a>&lt;/li>
+&lt;li>Android CLI: &lt;a class="link" href="https://developer.android.com/tools/adb?hl=en" target="_blank" rel="noopener"
+>https://developer.android.com/tools/adb?hl=en&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="setup">Setup
+&lt;/h2>&lt;p>Given the files and the scenario, I will use the Autopsy tool. Setting it up may take some time, so I’m starting with it here.&lt;/p>
+&lt;p>If you&amp;rsquo;re unfamiliar with Autopsy, here’s a brief description:&lt;/p>
+&lt;blockquote>
+&lt;p>Autopsy is an open-source digital investigation tool. It serves as the graphical interface for the Sleuth Kit and other forensic tools. It is commonly used to analyze hard drives and smartphones in the context of investigations. Key features of Autopsy include deleted file recovery, metadata analysis, keyword searching, timeline visualization, file system analysis, and more.&lt;/p>
+&lt;/blockquote>
+&lt;p>To use it, we need to create a &amp;ldquo;Case&amp;rdquo;:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case.png"
+width="782"
+height="468"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case_hu6083939050916543242.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case_hu10757773130814133319.png 1024w"
+loading="lazy"
+alt="Autopsy"
+class="gallery-image"
+data-flex-grow="167"
+data-flex-basis="401px"
+>&lt;/p>
+&lt;!-- &lt;div class="image2-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="pictures/autopsy-case.png">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case.png" srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case_hu10571252955474266221.png 360w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case_hu12163003742284739222.png 720w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-case_hu15699116795484705861.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="620" />
+&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;/div> -->
+&lt;p>Here, we know we’re not dealing with a &amp;ldquo;Disk Image&amp;rdquo; or a VM, nor a local disk. Therefore, we select the appropriate option, &amp;ldquo;Logical Files&amp;rdquo;:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type.png"
+width="861"
+height="543"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type_hu6862495736605752197.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type_hu13735227138581635848.png 1024w"
+loading="lazy"
+alt="Autopsy"
+class="gallery-image"
+data-flex-grow="158"
+data-flex-basis="380px"
+>&lt;/p>
+&lt;!-- &lt;div class="image2-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="pictures/autopsy-type.png">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type.png" srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type_hu10259340970336895008.png 360w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type_hu10231070479329917598.png 720w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-type_hu8278487795151172247.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="620" />
+&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;/div> -->
+&lt;p>We wait for Autopsy and its modules to complete the ingestion process. This may take some time.&lt;/p>
+&lt;p>All set, we can begin the investigation:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion.png"
+width="950"
+height="551"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion_hu8847970414139715284.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion_hu5619979587414845525.png 1024w"
+loading="lazy"
+alt="Autopsy"
+class="gallery-image"
+data-flex-grow="172"
+data-flex-basis="413px"
+>&lt;/p>
+&lt;!-- &lt;div class="image2-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="pictures/autopsy-ingestion.png">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion.png" srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion_hu5021449277738356024.png 360w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion_hu5953934403159561371.png 720w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/autopsy-ingestion_hu1274128389175726007.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="620" />
+&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;/div> -->
+&lt;h2 id="questions">Questions
+&lt;/h2>&lt;h3 id="question-1">Question 1
+&lt;/h3>&lt;h4 id="what-is-the-email-address-used-by-the-agent-in-various-applicationsservices">What is the email address used by the agent in various applications/services?
+&lt;/h4>&lt;p>To answer this, I will use the report generated by Autopsy via ALEAPP (Android Logs Events And Protobuf Parser), an open-source project aimed at parsing all known Android artifacts for forensic analysis.&lt;/p>
+&lt;p>To find it quickly and easily, we can search in:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>/data/data/com.android.vending/databases/library.db&lt;/code> to find the Google account used to download apps.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/library-db.png"
+width="1106"
+height="416"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/library-db_hu14356497083862899817.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/library-db_hu15170373232235569335.png 1024w"
+loading="lazy"
+alt="library.db"
+class="gallery-image"
+data-flex-grow="265"
+data-flex-basis="638px"
+>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>/data/data/com.android.providers.contacts/databases/contacts2.db&lt;/code> to find the Google account used to sync contacts.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts2-db.png"
+width="391"
+height="238"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts2-db_hu11527735429286072776.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts2-db_hu17764455955817381113.png 1024w"
+loading="lazy"
+alt="contacts2.db"
+class="gallery-image"
+data-flex-grow="164"
+data-flex-basis="394px"
+>&lt;/p>
+&lt;p>Additionally (not applicable in this challenge):&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>/data/com.android.vending/shared_prefs/lastaccount.xml&lt;/code> (last account used on Google PlayStore for Android 9 and later).&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.gms/shared_prefs/BackupAccount.xml&lt;/code> (email for backup account).&lt;/li>
+&lt;li>&lt;code>/data/com.android.email/databases/EmailProvider.db&lt;/code> (email accounts, 3rd-party app data, and messages associated with email notifications).&lt;/li>
+&lt;/ul>
+&lt;p>Finally, we end up with the HTML report:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp.png"
+width="1305"
+height="1293"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp_hu7130096182844556435.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp_hu12263893790261698615.png 1024w"
+loading="lazy"
+alt="ALEAPP"
+class="gallery-image"
+data-flex-grow="100"
+data-flex-basis="242px"
+>&lt;/p>
+&lt;!--
+&lt;div class="image2-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="pictures/aleapp.png">
+&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp.png" srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp_hu14425811290376317999.png 360w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp_hu15982933620649972970.png 720w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp_hu3249029777657563161.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="720" />
+&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;/div> -->
+&lt;p>The email address can be found in various places.&lt;/p>
+&lt;p>For example, in the &amp;ldquo;Chrome&amp;rdquo; app under &amp;ldquo;Autofill&amp;rdquo; (a feature that automatically fills in forms with saved information):&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-autofill.png"
+width="1055"
+height="246"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-autofill_hu11332893087194299595.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-autofill_hu11223589903272610126.png 1024w"
+loading="lazy"
+alt="Chrome Autofill"
+class="gallery-image"
+data-flex-grow="428"
+data-flex-basis="1029px"
+>&lt;/p>
+&lt;p>In the Chrome &amp;ldquo;Login Data&amp;rdquo;:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login.png"
+width="1059"
+height="245"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login_hu17712187877154962798.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login_hu16446215484735778592.png 1024w"
+loading="lazy"
+alt="Chrome Login Data"
+class="gallery-image"
+data-flex-grow="432"
+data-flex-basis="1037px"
+>&lt;/p>
+&lt;p>And in the &amp;ldquo;Installed Apps (Library)&amp;rdquo; section, we find the Google account email used for app downloads:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-app-library.png"
+width="1063"
+height="316"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-app-library_hu13714229813044265702.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-app-library_hu16148577922576020004.png 1024w"
+loading="lazy"
+alt="Installed App (Library)"
+class="gallery-image"
+data-flex-grow="336"
+data-flex-basis="807px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>olegpachinksy@gmail.com&lt;/code>&lt;/p>
+&lt;h3 id="question-2">Question 2
+&lt;/h3>&lt;h4 id="what-is-the-contact-number-of-the-handler-assigned-to-the-arrested-agent">What is the contact number of the handler assigned to the arrested agent?
+&lt;/h4>&lt;p>In the &amp;ldquo;Contacts&amp;rdquo; section:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts.png"
+width="1053"
+height="152"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts_hu6587797369375758064.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/contacts_hu2168626199806216219.png 1024w"
+loading="lazy"
+alt="Contacts"
+class="gallery-image"
+data-flex-grow="692"
+data-flex-basis="1662px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>+323145232315&lt;/code>&lt;/p>
+&lt;h3 id="question-3">Question 3
+&lt;/h3>&lt;h4 id="retrieve-the-credentials-and-link-to-the-official-portal-for-ravenski-agents-this-could-provide-an-intelligence-advantage-by-using-this-access-to-gather-actionable-information-about-upcoming-operations-planned-by-the-ravenski-government">Retrieve the credentials and link to the official portal for Ravenski agents. This could provide an intelligence advantage by using this access to gather actionable information about upcoming operations planned by the Ravenski government.
+&lt;/h4>&lt;p>We already found the answer to this question in Question 1 via Chrome &amp;ldquo;Login Data&amp;rdquo;:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login2.png"
+width="1055"
+height="240"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login2_hu15296478488851435636.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/chrome-login2_hu11746730972429607906.png 1024w"
+loading="lazy"
+alt="Chrome Login Data"
+class="gallery-image"
+data-flex-grow="439"
+data-flex-basis="1055px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>agent.ravensk.idu.com:olegpachinksy007:HBLKNKD0MADsdfsa2334(*&amp;amp;DSMDB&lt;/code>&lt;/p>
+&lt;h3 id="question-4">Question 4
+&lt;/h3>&lt;h4 id="what-is-the-contact-code-used-to-confirm-the-identity-of-the-agent-and-handler-when-using-a-secure-chat-channel">What is the contact code used to confirm the identity of the agent and handler when using a secure chat channel?
+&lt;/h4>&lt;p>First, I’ll check for potential SMS messages here: &lt;code>/data/data/com.android.providers.telephony/databases/mmssms.db&lt;/code>.&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mmssms-db.png"
+width="959"
+height="1197"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mmssms-db_hu14772761795677474013.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mmssms-db_hu3808283121989879023.png 1024w"
+loading="lazy"
+alt="mmssms.db"
+class="gallery-image"
+data-flex-grow="80"
+data-flex-basis="192px"
+>&lt;/p>
+&lt;p>Nothing found.&lt;/p>
+&lt;p>We could also check here, though not applicable in this challenge:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>/data/com.google.android.gms/databases/icing_mmssms.db&lt;/code> (SMS/MMS).&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.gms/databases/ipa_mmssms.db&lt;/code> (SMS/MMS).&lt;/li>
+&lt;/ul>
+&lt;p>We need to find the messaging app used. In Autopsy’s &amp;ldquo;Installed Programs&amp;rdquo; section, we can view all installed apps:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-apps.png"
+width="880"
+height="748"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-apps_hu3650820897931429960.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/installed-apps_hu171029572481239251.png 1024w"
+loading="lazy"
+alt="Installed Programs"
+class="gallery-image"
+data-flex-grow="117"
+data-flex-basis="282px"
+>&lt;/p>
+&lt;p>Different categories are shown:&lt;/p>
+&lt;ul>
+&lt;li>Installed Apps (GMS)&lt;/li>
+&lt;li>Installed Apps (Library)&lt;/li>
+&lt;li>Installed Apps (Vending)&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Installed Apps - GMS&lt;/strong>:
+This category refers to apps installed on the device, regardless of their installation method. Data can be found here: &lt;code>/data/com.google.android.gms/databases/&lt;/code>.&lt;/p>
+&lt;p>&lt;strong>Installed Apps - Library&lt;/strong>:
+This category refers to the app library for the Google user on the device. It may contain apps installed by the same Google account on another device or a previous installation. Data is stored here: &lt;code>/data/com.android.vending/databases/&lt;/code>.&lt;/p>
+&lt;p>&lt;strong>Installed Apps - Vending&lt;/strong>:
+This category specifically refers to apps installed via the Google Play Store. Data is retained even if the app is uninstalled and is located here: &lt;code>/data/com.android.vending/databases/&lt;/code>.&lt;/p>
+&lt;p>For clarity, let’s return to ALEAPP and focus on &amp;ldquo;Vending&amp;rdquo; type apps:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp-installed-app-vending.png"
+width="1055"
+height="626"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp-installed-app-vending_hu1141038315898512112.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/aleapp-installed-app-vending_hu13659998016684563510.png 1024w"
+loading="lazy"
+alt="ALEAPP - Installed Apps (Vending)"
+class="gallery-image"
+data-flex-grow="168"
+data-flex-basis="404px"
+>&lt;/p>
+&lt;p>The app that stands out is &lt;code>mega.privacy.android.app&lt;/code>. Indeed, it’s a messaging application:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega.png"
+width="781"
+height="734"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega_hu1189030808320422895.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega_hu16736818150663509043.png 1024w"
+loading="lazy"
+alt="MEGA"
+class="gallery-image"
+data-flex-grow="106"
+data-flex-basis="255px"
+>&lt;/p>
+&lt;p>ALEAPP has parsed messages exchanged via MEGA:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-messages.png"
+width="1045"
+height="942"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-messages_hu15900992541428924357.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-messages_hu16724471899791683972.png 1024w"
+loading="lazy"
+alt="Messages"
+class="gallery-image"
+data-flex-grow="110"
+data-flex-basis="266px"
+>&lt;/p>
+&lt;p>We can find this information here: &lt;code>/data/data/mega.privacy.android.app/karere-TU1IaTh4TUJpdTQKAfO_2P0qU8NMP7zDRlgv.db&lt;/code>.&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>REDAPPLEONACAR&lt;/code>&lt;/p>
+&lt;h3 id="question-5">Question 5
+&lt;/h3>&lt;h4 id="the-handler-shared-a-document-with-the-agent-using-a-cloud-storage-service-when-was-this-file-shared-with-the-agent">The handler shared a document with the agent using a cloud storage service. When was this file shared with the agent?
+&lt;/h4>&lt;p>Nothing found in messages. The document must have been sent another way. We know there’s no other messaging app, and it couldn’t have been sent via SMS/MMS.&lt;/p>
+&lt;p>In the installed apps, we saw &lt;code>com.google.android.apps.docs&lt;/code>. Let’s check here: &lt;code>\data\data\com.google.android.apps.docs&lt;/code>.&lt;/p>
+&lt;p>We find the database &lt;code>/data/data/com.google.android.apps.docs/app_cello/olegpachinksy@gmail.com/cello.db&lt;/code> containing this information:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/celo-db.png"
+width="1033"
+height="240"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/celo-db_hu13525151425253133660.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/celo-db_hu12549832181728511141.png 1024w"
+loading="lazy"
+alt="cello.db"
+class="gallery-image"
+data-flex-grow="430"
+data-flex-basis="1033px"
+>&lt;/p>
+&lt;p>The file can also be found here: &lt;code>EVIDENCE-CASE-RAVENSKIAN-AGENT-002/storage/emulated/0/Download/Debrief-Velorian OP Expansion East.pdf&lt;/code>:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op.png"
+width="1270"
+height="999"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op_hu7260486241203699891.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op_hu4913527138095684519.png 1024w"
+loading="lazy"
+alt="Debrief-Velorian OP Expansion East"
+class="gallery-image"
+data-flex-grow="127"
+data-flex-basis="305px"
+>&lt;/p>
+&lt;p>Note: Autopsy interprets timestamps using your computer’s time zone by default. Remember to adjust this setting in Autopsy (Tools &amp;gt; Options &amp;gt; View &amp;gt; Time Zone).&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>2024-04-01 09:36:41&lt;/code>&lt;/p>
+&lt;h3 id="question-6">Question 6
+&lt;/h3>&lt;h4 id="what-is-the-download-uri-for-the-previously-identified-shared-file">What is the download URI for the previously identified shared file?
+&lt;/h4>&lt;p>We know the file was downloaded, as we found it in &lt;code>/storage/emulated/0/Download/&lt;/code>.&lt;/p>
+&lt;p>Thus, we can search in &lt;code>/data/data/com.android.providers.downloads/databases/downloads.db&lt;/code>:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/downloads-db.png"
+width="1038"
+height="262"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/downloads-db_hu8655702280366484884.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/downloads-db_hu14956409061816301645.png 1024w"
+loading="lazy"
+alt="downloads.db"
+class="gallery-image"
+data-flex-grow="396"
+data-flex-basis="950px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>https://www.googleapis.com/drive/v2internal/files/1iQKKlBU2vuJD1Xet6IYPt7IODVtDHxv1?alt=media&amp;amp;source=downloadUrl&amp;amp;auditContext=fileAction&amp;amp;reason=909&amp;amp;syncType=1&amp;amp;featureLabel=android-sync-classic&amp;amp;openDrive=false&amp;amp;errorRecovery=false&amp;amp;originatorApp=102&lt;/code>&lt;/p>
+&lt;h3 id="question-7">Question 7
+&lt;/h3>&lt;h4 id="to-gather-further-intelligence-for-velorias-counter-espionage-efforts-what-was-the-primary-objective-of-this-cyber-operation-led-by-the-ravenski-government">To gather further intelligence for Veloria’s counter-espionage efforts, what was the primary objective of this cyber operation led by the Ravenski government?
+&lt;/h4>&lt;p>Returning to the document:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op-text.png"
+width="726"
+height="584"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op-text_hu15768646427766231920.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/debrief-velorian-op-text_hu4640143542648210762.png 1024w"
+loading="lazy"
+alt="Debrief-Velorian OP Expansion East"
+class="gallery-image"
+data-flex-grow="124"
+data-flex-basis="298px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>Infiltrate the Velorian secured network to gather intelligence on upcoming cyber-attacks, their techniques, and target countries.&lt;/code>&lt;/p>
+&lt;h3 id="question-8">Question 8
+&lt;/h3>&lt;h4 id="identifying-the-handler-is-also-crucial-for-velorian-law-enforcement-to-understand-the-scope-of-this-operation-what-is-the-handlers-email-address">Identifying the handler is also crucial for Velorian law enforcement to understand the scope of this operation. What is the handler’s email address?
+&lt;/h4>&lt;p>We already saw this in the MEGA app messages:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-email.png"
+width="818"
+height="110"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-email_hu1491445961763267341.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-email_hu10939781081505149858.png 1024w"
+loading="lazy"
+alt="MEGA"
+class="gallery-image"
+data-flex-grow="743"
+data-flex-basis="1784px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>ivoryalex783@gmail.com&lt;/code>&lt;/p>
+&lt;h3 id="question-9">Question 9
+&lt;/h3>&lt;h4 id="what-is-the-name-of-the-place-where-the-agent-and-handler-met">What is the name of the place where the agent and handler met?
+&lt;/h4>&lt;p>Returning to the messages:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-message.png"
+width="1098"
+height="78"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-message_hu16067581850266218057.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/mega-message_hu11319932675825205584.png 1024w"
+loading="lazy"
+alt="MEGA - Messages"
+class="gallery-image"
+data-flex-grow="1407"
+data-flex-basis="3378px"
+>&lt;/p>
+&lt;p>This question took the most time; I spent about an hour on it.&lt;/p>
+&lt;p>Initially, I searched the usual locations:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>/data/com.google.android.apps.maps/databases/gmm_storage.db&lt;/code>&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.apps.maps/databases/search_history.db&lt;/code>&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.apps.maps/databases/da_destination_history&lt;/code>&lt;/li>
+&lt;li>&lt;code>/data/com.sec.android.daemonapp/db/weatherClock&lt;/code>&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.apps.maps/app_tts-cache/&lt;/code>&lt;/li>
+&lt;li>&lt;code>/data/com.google.android.apps.maps/cache/image_manager_disk_cache/&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>After finding nothing, I thought the answer might be in the metadata of images on the phone. Indeed, there were 48 images, several of which showed bars:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/images.png"
+width="997"
+height="621"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/images_hu5817545336451704280.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/images_hu620833154082632123.png 1024w"
+loading="lazy"
+alt="Images"
+class="gallery-image"
+data-flex-grow="160"
+data-flex-basis="385px"
+>&lt;/p>
+&lt;p>However, nothing conclusive.&lt;/p>
+&lt;p>I then questioned:&lt;/p>
+&lt;ul>
+&lt;li>Are there other navigation/location apps on the phone?&lt;/li>
+&lt;li>Is it certain I should look in the Google Maps app?&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>No, only Google Maps.&lt;/li>
+&lt;li>No, it’s possible the search was made in the browser instead.&lt;/li>
+&lt;/ol>
+&lt;p>After checking typical Google Maps artifacts, I decided to search in the browser but found nothing.&lt;/p>
+&lt;p>So I returned to digging through Google Maps artifacts:&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/liste-artefacts-google-map.png"
+width="274"
+height="218"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/liste-artefacts-google-map_hu13754758231964912769.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/liste-artefacts-google-map_hu12112553986474291706.png 1024w"
+loading="lazy"
+alt="artefacts - Google Maps"
+class="gallery-image"
+data-flex-grow="125"
+data-flex-basis="301px"
+>&lt;/p>
+&lt;ul>
+&lt;li>app: nothing relevant&lt;/li>
+&lt;li>app_offline_downloads: nothing relevant&lt;/li>
+&lt;li>app_offline_hashes: nothing relevant&lt;/li>
+&lt;li>app_textures: nothing relevant&lt;/li>
+&lt;li>app_webview: nothing relevant&lt;/li>
+&lt;li>cache: nothing relevant&lt;/li>
+&lt;li>databases: too many files, will revisit&lt;/li>
+&lt;li>files: &amp;ldquo;new_recent_history_cache_search.cs&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/new_recent_history_cache_search.png"
+width="517"
+height="278"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/new_recent_history_cache_search_hu13191291403912983547.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/new_recent_history_cache_search_hu3148326987438565339.png 1024w"
+loading="lazy"
+alt="new_recent_history_cache_search.cs"
+class="gallery-image"
+data-flex-grow="185"
+data-flex-basis="446px"
+>&lt;/p>
+&lt;p>It turns out I could have simply searched for the keyword &amp;ldquo;Pub&amp;rdquo; 🤡&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>Levstik Pub&lt;/code>&lt;/p>
+&lt;h3 id="question-10">Question 10
+&lt;/h3>&lt;h4 id="according-to-the-chat-between-the-agent-and-handler-it-appears-that-the-handler-sent-the-agent-an-image-related-to-the-infrastructure-used-by-the-ravenski-government-for-this-cyber-espionage-operation-what-c2-framework-is-used-by-the-ravenski-government">According to the chat between the agent and handler, it appears that the handler sent the agent an image related to the infrastructure used by the Ravenski government for this cyber-espionage operation. What C2 framework is used by the Ravenski government?
+&lt;/h4>&lt;p>Having already reviewed all images for Question 9, I have the answer.&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/c2.png"
+width="648"
+height="412"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/c2_hu11013950204403249464.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/c2_hu16068086331019550701.png 1024w"
+loading="lazy"
+alt="C2"
+class="gallery-image"
+data-flex-grow="157"
+data-flex-basis="377px"
+>&lt;/p>
+&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>Empire&lt;/code>&lt;/p>
+&lt;h3 id="question-11">Question 11
+&lt;/h3>&lt;h4 id="collecting-information-on-infrastructure-such-as-ip-addresses-or-hostnames-is-crucial-for-velorian-authorities-as-they-prepare-a-counter-offensive-based-on-the-recovered-image-sent-by-the-handler-to-the-agent-what-is-the-ip-address-of-one-of-the-c2-servers-operated-by-ravenski-threat-actors">Collecting information on infrastructure, such as IP addresses or hostnames, is crucial for Velorian authorities as they prepare a counter-offensive. Based on the recovered image sent by the handler to the agent, what is the IP address of one of the C2 servers operated by Ravenski threat actors?
+&lt;/h4>&lt;p>&lt;strong>Answer&lt;/strong>:
+&lt;code>98.24.12.45&lt;/code>&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/success.png"
+width="707"
+height="483"
+srcset="https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/success_hu1097418382369568901.png 480w, https://jaybird1291.github.io/blog/blog/en/p/opshieldwall-2/pictures/success_hu5903210077294405049.png 1024w"
+loading="lazy"
+alt="Success"
+class="gallery-image"
+data-flex-grow="146"
+data-flex-basis="351px"
+>&lt;/p></description></item></channel></rss>

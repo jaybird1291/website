@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on Jaybird1291</title><link>https://jaybird1291.github.io/blog/ja/page/</link><description>Recent content in Pages on Jaybird1291</description><generator>Hugo -- gohugo.io</generator><language>ja</language><atom:link href="https://jaybird1291.github.io/blog/ja/page/index.xml" rel="self" type="application/rss+xml"/><item><title>完了リスト</title><link>https://jaybird1291.github.io/blog/ja/completions/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jaybird1291.github.io/blog/ja/completions/</guid><description>&lt;p>これまでに完了したすべてのチャレンジ、ラボ、ボックスなど、および参加した会議やトレーニングのリストです。&lt;/p>
+&lt;h2 id="hackthebox">HackTheBox
+&lt;/h2>&lt;ul>
+&lt;li>Iron = Insane&lt;/li>
+&lt;li>Red = Hard&lt;/li>
+&lt;li>Orange = Medium&lt;/li>
+&lt;li>Green = Easy&lt;/li>
+&lt;/ul>
+&lt;p>一部の画像は、HTBの結果ページにリンクしていません。これらはHackTheBox Enterpriseプラットフォームでのみ利用可能なボックスやシャーロックであり、共有リンクが許可されていません。&lt;/p>
+&lt;h3 id="シャーロック">シャーロック
+&lt;/h3>&lt;h4 id="dfir--soc">DFIR / SOC
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall7.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall7_hu579724800650327479.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall7_hu2454315065833572799.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall7_hu8889304676559092459.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-7
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/612">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/htb-aptnightmare.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/htb-aptnightmare_hu14506320040222139442.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-aptnightmare_hu8130504630447302240.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-aptnightmare_hu17877421353539112076.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+APTNightmare
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall4.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall4_hu5290050942369492626.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall4_hu9133739515828578575.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall4_hu7696170895908073641.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-4
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall2.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall2_hu17243326217080313549.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall2_hu11472612143667253910.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall2_hu7012134481310493621.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-2
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall1.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall1_hu4429877169849273751.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall1_hu1815357149590305642.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-opshieldwall1_hu7199748969793661734.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-1
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/613">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/htb-JingleBell.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/htb-JingleBell_hu15520807250684938836.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-JingleBell_hu1113491640751933650.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-JingleBell_hu2223187648654883136.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Jingle Bell
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/586">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/htb-recollection.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/htb-recollection_hu9365108520062341401.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-recollection_hu3569605058189495193.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-recollection_hu4748220565018237411.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Recollection
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/585">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/htb-noted.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/htb-noted_hu16006733092085636200.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-noted_hu4244040473907432197.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-noted_hu3589332335171942085.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Noted
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/558">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/htb-tracer.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/htb-tracer_hu13172058219398332484.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-tracer_hu476542104265597376.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-tracer_hu11987707345085084332.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Tracer
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/557">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/htb-logjammer.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/htb-logjammer_hu7911088276543909127.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-logjammer_hu690602427098028775.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-logjammer_hu14522627674507713650.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Log Jammer
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/569">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/htb-rogueone.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/htb-rogueone_hu7664145778323154221.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-rogueone_hu18301601039103678755.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-rogueone_hu12251393642675604528.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Rogue One
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h4 id="マルウェア分析">マルウェア分析
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall6.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall6_hu5621374275916172783.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall6_hu3841799911030862651.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall6_hu9587534117345449726.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-6
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h4 id="クラウド">クラウド
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://labs.hackthebox.com/achievement/sherlock/1271052/573">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/htb-nubilum-2.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/htb-nubilum-2_hu14358102005267188694.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-nubilum-2_hu17497253826863540861.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/htb-nubilum-2_hu12719084516349249626.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Nubilum-2
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h3 id="ボックス">ボックス
+&lt;/h3>&lt;h4 id="linux">Linux
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall5.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall5_hu4024025657688833182.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall5_hu8779950622552055684.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall5_hu16521836625394008913.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-5
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall3.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall3_hu15423821179330681262.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall3_hu16180536951750078752.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/OpShieldWall3_hu13015791639527373136.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;figcaption>
+OpShieldWall-3
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/605">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/Blurry.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/Blurry_hu15351397706230984902.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/Blurry_hu146879816270839374.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/Blurry_hu14299096155221514037.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Blurry
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/598">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/Runner.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/Runner_hu6455371249579715448.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/Runner_hu8065185850918337061.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/Runner_hu15946208956993193267.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Runner
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/596">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/iclean.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/iclean_hu11159530487368458987.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/iclean_hu2030006978562193355.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/iclean_hu13183835513825375033.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+IClean
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/590">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/Perfection.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/Perfection_hu8207586915382724039.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/Perfection_hu5684711410623451424.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/Perfection_hu11410880852843531185.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Perfection
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/603">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/BoardLight.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/BoardLight_hu9022996687300344379.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/BoardLight_hu7803853930145595769.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/BoardLight_hu15945925623941766793.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+BoardLight
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image-item">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/594">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/Headless.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/Headless_hu10041931000319220926.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/Headless_hu17819858676304818438.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/Headless_hu8682198354528407257.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Headless
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/563">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/wifinetic.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/wifinetic_hu15526568003115025989.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/wifinetic_hu13927562312298190171.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/wifinetic_hu10476196525861621815.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Wifinetic
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/504">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/metatwo.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/metatwo_hu9714854198424503102.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/metatwo_hu4325594907114618375.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/metatwo_hu9488859881305071060.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+MetaTwo
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/1">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/lame.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/lame_hu7801889187164139196.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/lame_hu6722013954998448917.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/lame_hu6250407694448391483.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Lame
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/121">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/nibbles.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/nibbles_hu13711978232794863721.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/nibbles_hu2613596401305171967.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/nibbles_hu15107159489188437247.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Nibbles
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/513">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/precious.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/precious_hu9815729354025273953.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/precious_hu9661456167198837651.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/precious_hu12325692223714062164.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Precious
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h4 id="windows">Windows
+&lt;/h4>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/144">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/jerry.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/jerry_hu10660849773579491429.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/jerry_hu5807799828738485100.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/jerry_hu17319030519082570605.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Jerry
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/177">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/netmon.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/netmon_hu8258641792238506468.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/netmon_hu5226152736025356256.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/netmon_hu5446841209155805534.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Netmon
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://www.hackthebox.com/achievement/machine/1271052/51">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/blue.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/blue_hu2280389026581750800.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/blue_hu11716184482303536226.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/blue_hu9760226231665272777.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="120" />
+&lt;/a>
+&lt;figcaption>
+Blue
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="hacktheboxアカデミー">HackTheBoxアカデミー
+&lt;/h2>&lt;h3 id="モジュール">モジュール
+&lt;/h3>&lt;p>&lt;a class="link" href="htb-academy-transcript.pdf" >Transcript.pdf&lt;/a>&lt;/p>
+&lt;br>
+&lt;h2 id="rootme">RootMe
+&lt;/h2>&lt;p>2045ポイント（105チャレンジ）&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/rootme-validations.png"
+width="1951"
+height="822"
+srcset="https://jaybird1291.github.io/blog/blog/ja/completions/rootme-validations_hu2624416421133798099.png 480w, https://jaybird1291.github.io/blog/blog/ja/completions/rootme-validations_hu3755144633520605443.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="237"
+data-flex-basis="569px"
+>
+&lt;br>&lt;/p>
+&lt;h3 id="ネットワーク-2024年5月10日時点で100">ネットワーク (2024年5月10日時点で100%)
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/rootme-reseau.png"
+width="1074"
+height="696"
+srcset="https://jaybird1291.github.io/blog/blog/ja/completions/rootme-reseau_hu15883397316856032297.png 480w, https://jaybird1291.github.io/blog/blog/ja/completions/rootme-reseau_hu12060853295638203063.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="154"
+data-flex-basis="370px"
+>
+&lt;br>&lt;/p>
+&lt;h3 id="フォレンジック-2024年7月23日時点で62">フォレンジック (2024年7月23日時点で62%)
+&lt;/h3>&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/rootme-forensic.png"
+width="983"
+height="944"
+srcset="https://jaybird1291.github.io/blog/blog/ja/completions/rootme-forensic_hu13832100707832213538.png 480w, https://jaybird1291.github.io/blog/blog/ja/completions/rootme-forensic_hu14990982727009482016.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="104"
+data-flex-basis="249px"
+>
+&lt;br>&lt;/p>
+&lt;h2 id="サイバーディフェンダーズ">サイバーディフェンダーズ
+&lt;/h2>&lt;h3 id="ネットワークフォレンジック">ネットワークフォレンジック
+&lt;/h3>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/46/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/Acoustic.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/Acoustic_hu15354697604698474116.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/Acoustic_hu8880302018282201001.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/Acoustic_hu415220149048500509.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Medium
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/68/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/PacketMaze.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/PacketMaze_hu12914593227251596679.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/PacketMaze_hu7542653086843307191.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/PacketMaze_hu6588275853097952125.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Medium
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/91/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/HawkEye.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/HawkEye_hu6283505015548296721.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/HawkEye_hu14228456030665469623.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/HawkEye_hu15746856790174388946.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Medium
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/153/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/OpenWire.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/OpenWire_hu8282177788446358399.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/OpenWire_hu13429565196393086489.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/OpenWire_hu16033793978522266370.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Medium
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/170/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/webinvestigation.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/webinvestigation_hu15704396993755092482.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/webinvestigation_hu308155583775391976.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/webinvestigation_hu11932654100887685377.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/143/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/PsExec_Hunt.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/PsExec_Hunt_hu10619219234567398709.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/PsExec_Hunt_hu522352600796677305.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/PsExec_Hunt_hu10786640909411843998.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/146/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/PoisonedCredentials.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/PoisonedCredentials_hu11325156128933334424.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/PoisonedCredentials_hu6686387789662348341.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/PoisonedCredentials_hu3270805595637656253.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/149/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/WebStrike.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/WebStrike_hu6482539043750461512.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/WebStrike_hu6868677040100264364.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/WebStrike_hu18034741982584633714.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;a href="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/135/">
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/Tomcat_Takeover.webp" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/Tomcat_Takeover_hu17891501569975409699.webp 360w, https://jaybird1291.github.io/blog/blog/ja/completions/Tomcat_Takeover_hu8709004526798782167.webp 720w, https://jaybird1291.github.io/blog/blog/ja/completions/Tomcat_Takeover_hu14999244439214972445.webp 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="150" />
+&lt;/a>
+&lt;figcaption>
+Easy
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="tryhackme">TryHackMe
+&lt;/h2>&lt;p>92部屋を完了&lt;/p>
+&lt;h3 id="パス">パス
+&lt;/h3>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/thm-ps.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/thm-ps_hu12212920565235151075.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/thm-ps_hu14624947788008992376.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/thm-ps_hu5409664631841758671.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="250" />
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/thm-itcs.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/thm-itcs_hu7458374997566050520.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/thm-itcs_hu3579346142778577776.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/thm-itcs_hu2893484210292552865.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="250" />
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/thm-cb.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/thm-cb_hu17087676180828035337.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/thm-cb_hu16489013832456173895.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/thm-cb_hu17204799293709712481.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="250" />
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="コース">コース
+&lt;/h2>&lt;ul>
+&lt;li>&lt;strong>Kaspersky&lt;/strong>: Advanced Malware Analysis Techniques （高度なマルウェア分析技術）&lt;/li>
+&lt;li>&lt;strong>Kaspersky&lt;/strong>: Hunting APTs like a Ninja with YARA （YARAを使った忍者のようなAPT追跡）&lt;/li>
+&lt;li>&lt;strong>OALABS&lt;/strong>: Reverse Engineering 101 (RE101) （リバースエンジニアリング101）&lt;/li>
+&lt;li>&lt;strong>Roman Stuehler&lt;/strong>: Android App Hacking - Black Belt Edition （Androidアプリハッキング - ブラックベルト版）&lt;/li>
+&lt;li>&lt;strong>Pentherz&lt;/strong>: Intro to SDR Hacking （SDRハッキング入門）&lt;/li>
+&lt;li>&lt;strong>Christopher Negus&lt;/strong>: Linux Bible （リナックスバイブル）&lt;/li>
+&lt;li>&lt;strong>OSINT&lt;/strong>: (Open Source Intelligence Techniques) : IntelTechniques （オープンソースインテリジェンステクニック）&lt;/li>
+&lt;li>&lt;strong>Opdisk&lt;/strong>: The Cyber Plumber&amp;rsquo;s Handbook （サイバープランバーのハンドブック）&lt;/li>
+&lt;/ul>
+&lt;h2 id="会議とミートアップ">会議とミートアップ
+&lt;/h2>&lt;h3 id="2023年">2023年
+&lt;/h3>&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/hexacon.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/hexacon_hu2260745631328100675.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/hexacon_hu4738974758408711249.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/hexacon_hu3338963062700541662.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="300" />
+&lt;figcaption>
+Hexacon
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/defconparis.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/defconparis_hu10609380435012629576.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/defconparis_hu14070235002871940370.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/defconparis_hu10359481016057934603.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="165" />
+&lt;figcaption>
+DEFCON Paris
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/lehack.png" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/lehack_hu10458075379095863693.png 360w, https://jaybird1291.github.io/blog/blog/ja/completions/lehack_hu6696575244145232669.png 720w, https://jaybird1291.github.io/blog/blog/ja/completions/lehack_hu9532804271304724566.png 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="320" />
+&lt;figcaption>
+LeHack
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div>
+&lt;div class="image-container">
+&lt;div class="image">
+&lt;figure>
+&lt;img src="https://jaybird1291.github.io/blog/blog/ja/completions/meetuphtb.jpg" srcset="https://jaybird1291.github.io/blog/blog/ja/completions/meetuphtb_hu2148130649180681101.jpg 360w, https://jaybird1291.github.io/blog/blog/ja/completions/meetuphtb_hu16050568875697026432.jpg 720w, https://jaybird1291.github.io/blog/blog/ja/completions/meetuphtb_hu10562525598476022067.jpg 1920w" sizes="(max-width: 37.5em) 360px, (min-width: 75em) 720px, (min-width: 112.5em) 1200px" width="320" />
+&lt;figcaption>
+HTBミートアップ フランス
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/div></description></item><item><title>調べる</title><link>https://jaybird1291.github.io/blog/ja/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jaybird1291.github.io/blog/ja/search/</guid><description/></item><item><title>文書</title><link>https://jaybird1291.github.io/blog/ja/archives/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jaybird1291.github.io/blog/ja/archives/</guid><description/></item></channel></rss>

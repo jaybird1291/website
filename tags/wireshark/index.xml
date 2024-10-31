@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Wireshark on Jaybird1291</title><link>https://jaybird1291.github.io/blog/tags/wireshark/</link><description>Recent content in Wireshark on Jaybird1291</description><generator>Hugo -- gohugo.io</generator><language>fr</language><lastBuildDate>Tue, 07 May 2024 08:00:05 +0000</lastBuildDate><atom:link href="https://jaybird1291.github.io/blog/tags/wireshark/index.xml" rel="self" type="application/rss+xml"/><item><title>OpShieldWall-1</title><link>https://jaybird1291.github.io/blog/p/opshieldwall-1/</link><pubDate>Tue, 07 May 2024 08:00:05 +0000</pubDate><guid>https://jaybird1291.github.io/blog/p/opshieldwall-1/</guid><description>&lt;img src="https://jaybird1291.github.io/blog/p/opshieldwall-1/htb-opshieldwall1.png" alt="Featured image of post OpShieldWall-1" />&lt;h2 id="scénario">Scénario
+&lt;/h2>&lt;blockquote>
+&lt;p>Merci d&amp;rsquo;avoir répondu à notre appel. Le ministère de la Défense de Velorian a désespérément besoin d&amp;rsquo;aide&amp;hellip;&lt;/p>
+&lt;p>Nous devons rester discrets, mais nous pensons que le Wi-Fi public des bureaux du ministère de la Défense de Velorian a été compromis. L&amp;rsquo;impact semble faible, mais les diagrammes du réseau montrent qu&amp;rsquo;aucune segmentation réelle du réseau n&amp;rsquo;a été réalisée et que le trafic entre les appareils est autorisé. Les ministres du gouvernement utilisent ce réseau avec des équipements BYoD et des hôtes Velorian MoDNet. Veuillez analyser le pcap fourni et confirmer comment et quand cela s&amp;rsquo;est produit. N&amp;rsquo;oubliez pas que cette enquête est de type TLP Amber.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="fichiers">Fichiers
+&lt;/h2>&lt;ul>
+&lt;li>opshieldwall1.zip contenant la capture réseau &amp;ldquo;VELORIA-NETWORK.pcap&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;h2 id="setup">Setup
+&lt;/h2>&lt;p>Au vu de la simplicité de ce challenge, on peut simplement se limiter à tshark / wireshark.&lt;/p>
+&lt;h2 id="questions">Questions
+&lt;/h2>&lt;h3 id="question-1">Question 1
+&lt;/h3>&lt;h4 id="veuillez-confirmer-le-ssid-de-notre-réseau-wifi">Veuillez confirmer le SSID de notre réseau WiFi.
+&lt;/h4>&lt;p>Premièrement, familiarisez-nous avec la capture. Nous allons utiliser la commande suivante afin d&amp;rsquo;avoir des statistiques :&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ tshark -r traffic.pcapng -qz
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;code>-r&lt;/code> permet de lire (read) un fichier&lt;/li>
+&lt;li>&lt;code>-q&lt;/code> permet d&amp;rsquo;être plus &amp;ldquo;quiet&amp;rdquo; à la sortie (utile pour les stats car cela permet d&amp;rsquo;afficher les statistiques globales, et non par paquet.)&lt;/li>
+&lt;li>&lt;code>-z&lt;/code> permet l&amp;rsquo;affichage de statistiques&lt;/li>
+&lt;/ul>
+&lt;p>Il y a beaucoup de valeurs possible (&lt;code>tshark -z help&lt;/code> pour les afficher) mais ici nous souhaitons avant tout savoir :&lt;/p>
+&lt;ul>
+&lt;li>le nombre de paquet&lt;/li>
+&lt;li>la durée de la capture&lt;/li>
+&lt;li>les IPv4 avec le plus de paquet&lt;/li>
+&lt;li>les IPv4 endpoints échangeant ensemble le plus&lt;/li>
+&lt;li>les protocoles les plus utilisés&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Nombre de paquet et durée :&lt;/strong> 106 ; 31.6 sec&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ tshark -r VELORIA-NETWORK.pcap -qz io,stat,0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> IO Statistics &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> Duration: 31.6 secs &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> Interval: 31.6 secs &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> Col 1: Frames and bytes &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>---------------------------------&lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> Interval &lt;span class="p">|&lt;/span> Frames &lt;span class="p">|&lt;/span> Bytes &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>-------------------------------&lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> 0.0 &amp;lt;&amp;gt; 31.6 &lt;span class="p">|&lt;/span> &lt;span class="m">106&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="m">20759&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===================================&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>IPv4 endpoints :&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>avec le plus de paquet :&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ tshark -r VELORIA-NETWORK.pcap -qz endpoints,ip
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">================================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">IPv4 Endpoints
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Filter:&amp;lt;No Filter&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">|&lt;/span> Packets &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Bytes &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Tx Packets &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Tx Bytes &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Rx Packets &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Rx Bytes &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">0.0.0.0 &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span> &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">255.255.255.255 &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">10.0.3.1 &lt;span class="m">3&lt;/span> &lt;span class="m">1048&lt;/span> &lt;span class="m">3&lt;/span> &lt;span class="m">1048&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">10.0.3.52 &lt;span class="m">3&lt;/span> &lt;span class="m">1048&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">3&lt;/span> &lt;span class="nv">1048&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">================================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>échangeant le plus :&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tshark -r VELORIA-NETWORK.pcap -qz conv,ip
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">================================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">IPv4 Conversations
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Filter:&amp;lt;No Filter&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">|&lt;/span> &amp;lt;- &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> -&amp;gt; &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Total &lt;span class="p">|&lt;/span> Relative &lt;span class="p">|&lt;/span> Duration &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">|&lt;/span> Frames Bytes &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Frames Bytes &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span> Frames Bytes &lt;span class="p">|&lt;/span> Start &lt;span class="p">|&lt;/span> &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">0.0.0.0 &amp;lt;-&amp;gt; 255.255.255.255 &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> bytes &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span> bytes &lt;span class="m">3&lt;/span> &lt;span class="m">1044&lt;/span> bytes 23.256576000 8.3680
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">10.0.3.1 &amp;lt;-&amp;gt; 10.0.3.52 &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> bytes &lt;span class="m">3&lt;/span> &lt;span class="m">1048&lt;/span> bytes &lt;span class="m">3&lt;/span> &lt;span class="m">1048&lt;/span> bytes 23.256959000 8.3693
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">================================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Protocoles les plus utilisés :&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">tshark -r VELORIA-NETWORK.pcap -qz io,phs
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Protocol Hierarchy Statistics
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Filter:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sll frames:106 bytes:20759
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> radiotap frames:92 bytes:17572
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> wlan_radio frames:92 bytes:17572
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> wlan frames:92 bytes:17572
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> wlan.mgt frames:92 bytes:17572
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> eapol frames:6 bytes:999
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> eap frames:6 bytes:999
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ip frames:6 bytes:2092
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> udp frames:6 bytes:2092
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> dhcp frames:6 bytes:2092
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> arp frames:2 bytes:96
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">===================================================================&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Pour répondre à la question, il suffit d&amp;rsquo;utiliser la commande :&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">$ tshark -r VELORIA-NETWORK.pcap -T fields -e wlan.ssid &lt;span class="p">|&lt;/span> head -n &lt;span class="m">1&lt;/span> &lt;span class="p">|&lt;/span> xxd -r -p
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">VELORIA-MoD-AP012
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Explication&lt;/strong> :
+(&lt;a class="link" href="https://www.wireshark.org/docs/dfref/w/wlan.html" target="_blank" rel="noopener"
+>https://www.wireshark.org/docs/dfref/w/wlan.html&lt;/a>)&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>-t&lt;/code> affiche uniquement les champs spécifiés par l&amp;rsquo;utilisateur (nécessite donc forcément l&amp;rsquo;utilisation de l&amp;rsquo;option -e pour spécifier les champs).&lt;/li>
+&lt;li>&lt;code>-e wlan.ssid&lt;/code> spécifie que le champ wlan.ssid (SSID des réseaux sans fil) doit être extrait et affiché.&lt;/li>
+&lt;li>&lt;code>-xxd -r -p&lt;/code> l&amp;rsquo;output étant une suite hexadécimale, cela permet de le convertir en texte lisible&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Réponse&lt;/strong> :
+&lt;code>VELORIA-MoD-AP012&lt;/code>&lt;/p>
+&lt;h3 id="question-2">Question 2
+&lt;/h3>&lt;h4 id="veuillez-confirmer-ladresse-mac-du-point-daccès-ap">Veuillez confirmer l&amp;rsquo;adresse MAC du point d&amp;rsquo;accès (AP).
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">tshark -r VELORIA-NETWORK.pcap -T fields -e wlan.sa &lt;span class="p">|&lt;/span> head -n &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">02:00:00:00:01:00
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Réponse&lt;/strong> :
+&lt;code>02:00:00:00:01:00&lt;/code>&lt;/p>
+&lt;h3 id="question-3">Question 3
+&lt;/h3>&lt;h4 id="veuillez-confirmer-létatle-mécanisme-dauthentification-de-lap-et-le-vecteur-dattaque">Veuillez confirmer l&amp;rsquo;état/le mécanisme d&amp;rsquo;authentification de l&amp;rsquo;AP et le vecteur d&amp;rsquo;attaque.
+&lt;/h4>&lt;p>Passons à Wireshark.&lt;/p>
+&lt;p>&lt;img src="https://jaybird1291.github.io/blog/blog/p/opshieldwall-1/pictures/image.png"
+width="944"
+height="116"
+srcset="https://jaybird1291.github.io/blog/blog/p/opshieldwall-1/pictures/image_hu616452334496551155.png 480w, https://jaybird1291.github.io/blog/blog/p/opshieldwall-1/pictures/image_hu8139663477600881612.png 1024w"
+loading="lazy"
+alt="Séquence EAP (Extensible Authentication Protocol)"
+class="gallery-image"
+data-flex-grow="813"
+data-flex-basis="1953px"
+>&lt;/p>
+&lt;p>&lt;strong>Réponse&lt;/strong> :
+&lt;code>WPS&lt;/code>&lt;/p>
+&lt;h3 id="question-4">Question 4
+&lt;/h3>&lt;h4 id="quel-est-le-numéro-de-paquet-où-lattaque-a-t-elle-commencé-">Quel est le numéro de paquet où l&amp;rsquo;attaque a-t-elle commencé ?
+&lt;/h4>&lt;p>On peut facilement en déduire que c&amp;rsquo;est à la première tentative de connexion (étant les seuls dans la capture).&lt;/p>
+&lt;p>&lt;strong>Réponse&lt;/strong> :
+&lt;code>93&lt;/code>&lt;/p>
+&lt;h3 id="question-5">Question 5
+&lt;/h3>&lt;h4 id="quel-est-le-numéro-de-paquet-où-lattaque-sest-elle-terminée-">Quel est le numéro de paquet où l&amp;rsquo;attaque s&amp;rsquo;est-elle terminée ?
+&lt;/h4>&lt;p>On peut facilement en déduire que c&amp;rsquo;est lorsque l&amp;rsquo;authentifcation a échoué.&lt;/p>
+&lt;p>&lt;strong>Réponse&lt;/strong> :
+&lt;code>8&lt;/code>&lt;/p></description></item></channel></rss>
