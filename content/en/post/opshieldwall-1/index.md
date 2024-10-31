@@ -5,6 +5,7 @@ slug: opshieldwall-1
 date: 2024-05-07 08:00:05+0000
 image: htb-opshieldwall1.png
 categories:
+    - WriteUp
     - Sherlock
     - Easy
 tags:

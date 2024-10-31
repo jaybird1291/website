@@ -111,17 +111,18 @@ Some images do not link to the HTB result pages as they are boxes/Sherlocks only
 ## Cyberdefenders
 ### Network Forensics 
 <div class="image-container">
-    <div class="image">{{< figure src="PacketMaze.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/68/" width=150 >}}</div>
-    <div class="image">{{< figure src="HawkEye.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/91/" width=150 >}}</div>
-    <div class="image">{{< figure src="OpenWire.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/153/" width=150 >}}</div>
-    <div class="image">{{< figure src="webinvestigation.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/170/" width=150 >}}</div>
-    <div class="image">{{< figure src="PsExec_Hunt.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/143/" width=150 >}}</div>
+    <div class="image">{{< figure src="PacketMaze.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/46/" width=150 >}}</div>
+    <div class="image">{{< figure src="PacketMaze.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/68/" width=150 >}}</div>
+    <div class="image">{{< figure src="HawkEye.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/91/" width=150 >}}</div>
+    <div class="image">{{< figure src="OpenWire.webp" title="Medium" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/153/" width=150 >}}</div>
+    <div class="image">{{< figure src="webinvestigation.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/170/" width=150 >}}</div>
 </div>
 
 <div class="image-container">
-    <div class="image">{{< figure src="PoisonedCredentials.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/146/" width=150 >}}</div>
-    <div class="image">{{< figure src="WebStrike.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/149/" width=150 >}}</div>
-    <div class="image">{{< figure src="Tomcat_Takeover.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Miaoux2000/135/" width=150 >}}</div>
+    <div class="image">{{< figure src="PsExec_Hunt.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/143/" width=150 >}}</div>
+    <div class="image">{{< figure src="PoisonedCredentials.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/146/" width=150 >}}</div>
+    <div class="image">{{< figure src="WebStrike.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/149/" width=150 >}}</div>
+    <div class="image">{{< figure src="Tomcat_Takeover.webp" title="Easy" link="https://cyberdefenders.org/blueteam-ctf-challenges/progress/Jaybird1291/135/" width=150 >}}</div>
 </div>
 
 ## TryHackMe
